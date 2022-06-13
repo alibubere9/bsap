@@ -1,0 +1,13 @@
+{
+    "update_key": "This version is no longer supported, please update the application before using.",
+    "email": "admin@askmegroup.in",
+    "phoneNumber": "9876543210",
+    "sendFeeback": "Click on the below link to reach us",
+    "shareArticle": "Share {Article} {url}",
+    "shareBanner": "Share {Banner}",
+    "shareClassified": "Share {ClassifiedName} {ClassifiedAddress} {ClassifiedContact}",
+    "qualifications": "Xth, XIIth, Graduate, P.G., P.hD, N/A",
+    "whatsAppNumberNotFound": "This business has not listed any whatsApp contact number.",
+    "whatsAppDefault": "Hi, found {ClassifiedName} on AskMe, can you please help me with your service. {ClassifiedAddress} {ClassifiedContact} ",
+    "bestDeal": "Your requirement is sent to relevent businesses \nBusinesses compete with each other to get you the Best Deal"
+}

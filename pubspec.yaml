@@ -1,0 +1,64 @@
+name: classified_app
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.6+7
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  app_settings: ^4.1.0
+  cupertino_icons: ^1.0.2
+  equatable: ^2.0.0
+  firebase_auth: ^1.0.1
+  firebase_core: ^1.0.1
+  firebase_messaging: ^10.0.1
+  firebase_storage: ^8.0.0
+  flutter_bloc: ^7.0.0
+  flutter_svg: ^0.21.0-nullsafety.0
+  font_awesome_flutter: ^9.0.0-nullsafety
+  geolocator: ^7.0.1
+  get_it: ^6.0.0
+  http: ^0.13.0
+  image_picker: ^0.7.3
+  intl: ^0.17.0
+  package_info: ^2.0.0
+  page_transition: ^2.0.1-nullsafety.0
+  # restart_app: ^1.0.3
+  share: ^2.0.1
+  shared_preferences: ^2.0.5
+  shimmer: ^2.0.0
+  simple_animations: ^3.0.3
+  url_launcher: ^6.0.2
+  webview_flutter: ^2.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.9.0
+  mockito: ^5.0.3
+flutter_icons:
+  # remove_alpha_ios:true
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/icon.png"
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/fonts/
+
+  fonts:
+    - family: Berlin Sans
+      fonts:
+        - asset: assets/fonts/regular.ttf
+        - asset: assets/fonts/semibold.ttf
+          weight: 600
+        - asset: assets/fonts/bold.ttf
+          weight: 700
