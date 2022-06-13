@@ -13,15 +13,15 @@ class BezierDarkContainer extends StatelessWidget {
       child: ClipPath(
         clipper: ClipPainter(),
         child: Container(
-          height: MediaQuery.of(context).size.height * .3,
+          height: MediaQuery.of(context).size.height * .8,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                Theme.of(context).primaryColor.withOpacity(1),
-                Theme.of(context).primaryColor.withOpacity(0.8)
+                Colors.red.withOpacity(1),
+                Colors.red.withOpacity(0.8)
               ])),
         ),
       ),

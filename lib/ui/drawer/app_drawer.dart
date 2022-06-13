@@ -34,16 +34,16 @@ class AppDrawer extends StatelessWidget {
                             ? ListTile(
                                 title: Text(
                                   state.user.username!,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.w400),
                                 ),
-                                subtitle: Text(
+                                subtitle: const Text(
                                     AppDrawerStrings.manageSettingsAndProfile,
                                     style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w400)),
-                                trailing: ProfileImage(
+                                trailing: const ProfileImage(
                                   radius: 32,
                                   fontSize: 20,
                                 ),
@@ -59,13 +59,13 @@ class AppDrawer extends StatelessWidget {
                             : Container();
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Divider(
                       color: Theme.of(context).primaryColor,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     DrawerItems(
@@ -78,15 +78,6 @@ class AppDrawer extends StatelessWidget {
                           NavRouter.navKey!.currentState!
                               .popAndPushNamed(RouteStrings.SignUp);
                         }
-                      },
-                    ),
-                    DrawerItems(
-                      icon: FontAwesomeIcons.listUl,
-                      text: ConstantStrings.category,
-                      onTap: () {
-                        context.read<CategoryListBloc>().add(LoadCategories());
-                        NavRouter.navKey!.currentState!
-                            .popAndPushNamed(RouteStrings.CategoryList);
                       },
                     ),
                     DrawerItems(

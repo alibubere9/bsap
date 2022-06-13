@@ -24,10 +24,10 @@ class AuthenticationBloc
     AuthenticationEvent event,
   ) async* {
     if (event is AppStarted) {
-      await SystemSettingManager.loadSystemSetings();
+      //await SystemSettingManager.loadSystemSetings();
       if (_forceUpdateService.isSupported) {
         final bool hasToken = _userRepository.getUser() != null;
-        await AppMessagesManager.loadAppMessages();
+        //await AppMessagesManager.loadAppMessages();
 
         if (hasToken) {
           User? firebaseUser = _userRepository.getUser();

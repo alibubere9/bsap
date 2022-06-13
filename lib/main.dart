@@ -26,17 +26,17 @@ import 'ui/user/bloc/user_bloc.dart';
 import 'services/interfaces/i_theme_service.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // SystemChrome.setPreferredOrientations([
-  //   DeviceOrientation.portraitUp,
-  //   DeviceOrientation.portraitDown,
-  // ]);
-  // SystemChrome.setSystemUIOverlayStyle(
-  //     SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 
-  // getLoggedInUser();
-  // await di.initDI();
-  // di.sl<FirebaseApp>();
+  //getLoggedInUser();
+  await di.initDI();
+  di.sl<FirebaseApp>();
   runApp(
     MyApp(),
   );
@@ -45,17 +45,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "B-Sap",
-      home: Scaffold(
-          body: Center(
-              child: Text(
-        "B-Sap",
-        style: TextStyle(fontSize: 122, color: Theme.of(context).primaryColor),
-      ))),
-    );
-
-    //MultiBlocProvider(providers: providers(), child: buildMaterialApp());
+    return MultiBlocProvider(providers: providers(), child: buildMaterialApp());
   }
 
   Widget buildMaterialApp() {
@@ -79,38 +69,19 @@ class MyApp extends StatelessWidget {
     return [
       BlocProvider<HomeBloc>(
           create: (context) => di.sl<HomeBloc>()..add(LoadHome())),
-      BlocProvider<CategoryListBloc>(
-          create: (context) =>
-              di.sl<CategoryListBloc>()..add(LoadCategories())),
-      BlocProvider<ClassifiedProfileBloc>(
-          create: (context) => di.sl<ClassifiedProfileBloc>()),
-      BlocProvider<FaqsBloc>(create: (context) => di.sl<FaqsBloc>()),
-      BlocProvider<BestDealBloc>(create: (context) => di.sl<BestDealBloc>()),
-      BlocProvider<ArticleProfileBloc>(
-          create: (context) => di.sl<ArticleProfileBloc>()),
-      BlocProvider<NotificationBloc>(
-          create: (context) => di.sl<NotificationBloc>()),
-      BlocProvider<ClassifiedListBloc>(
-          create: (context) => di.sl<ClassifiedListBloc>()),
-      BlocProvider<ArticleListBloc>(
-          create: (context) => di.sl<ArticleListBloc>()),
+      // BlocProvider<FaqsBloc>(create: (context) => di.sl<FaqsBloc>()),
+      // BlocProvider<NotificationBloc>(
+      //     create: (context) => di.sl<NotificationBloc>()),
       BlocProvider<AuthenticationBloc>(
           create: (context) => di.sl<AuthenticationBloc>()..add(AppStarted())),
       BlocProvider<UserBloc>(
           create: (context) => di.sl<UserBloc>()..add(CheckUserEvent())),
-      BlocProvider<ReviewBloc>(create: (context) => di.sl<ReviewBloc>()),
+      //BlocProvider<ReviewBloc>(create: (context) => di.sl<ReviewBloc>()),
       BlocProvider<ThemeBloc>(
           create: (context) =>
               di.sl<ThemeBloc>()..add(ThemeEvent(isDarkTheme))),
-      BlocProvider<BannerBloc>(create: (context) => di.sl<BannerBloc>()),
-      BlocProvider<SubCategoryBloc>(
-        create: (context) => di.sl<SubCategoryBloc>(),
-      ),
       BlocProvider<SettingsBloc>(
         create: (context) => di.sl<SettingsBloc>()..add(LoadSettings()),
-      ),
-      BlocProvider<CarouselBloc>(
-        create: (context) => di.sl<CarouselBloc>()..add(LoadCarousels()),
       ),
     ];
   }

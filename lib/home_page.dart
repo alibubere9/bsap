@@ -14,7 +14,7 @@ class Home extends StatelessWidget {
     return BlocBuilder<AuthenticationBloc, AuthenticationState>(
       builder: (context, state) {
         if (state is InitialAuthentication) {
-          return SplashScreen();
+          return const SplashScreen();
         } else if (state is Unauthenticated) {
           return LoginPage();
         } else if (state is AuthenticatedState) {

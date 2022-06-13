@@ -55,13 +55,21 @@ class LoginForm extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
-                top: -800 * .15,
+                top: 600 * .10,
                 right: -MediaQuery.of(context).size.width * .4,
                 child: BezierContainer()),
             Positioned(
-                bottom: -600 * .30,
+                bottom: 800 * .65,
                 left: -MediaQuery.of(context).size.width * .2,
                 child: BezierDarkContainer()),
+            // Positioned(
+            //     bottom: -1500 * .20,
+            //     right: -MediaQuery.of(context).size.width * .4,
+            //     child: BezierContainer()),
+            // Positioned(
+            //     bottom: -1400 * .40,
+            //     left: -MediaQuery.of(context).size.width * .2,
+            //     child: BezierDarkContainer()),
             Center(
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20),
@@ -80,15 +88,6 @@ class LoginForm extends StatelessWidget {
                           builder: (context, state) {
                         return getViewAsPerState(state, context);
                       }),
-                      Center(
-                        child: Container(
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          alignment: Alignment.center,
-                          child: Text(ConstantStrings.otp,
-                              style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w400)),
-                        ),
-                      ),
                       SizedBox(height: height * .055),
                     ],
                   ),
@@ -185,7 +184,15 @@ class NumberInput extends StatelessWidget {
                 phoNo: "+91" + _phoneTextController.value.text,
                 context: context));
           }
-        }, context, 'Login')
+        }, context, 'Login'),
+        Center(
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            alignment: Alignment.center,
+            child: Text(ConstantStrings.otp,
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400)),
+          ),
+        ),
       ],
     );
   }

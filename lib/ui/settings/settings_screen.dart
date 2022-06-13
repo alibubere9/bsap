@@ -13,6 +13,8 @@ import 'Widgets/setting_subfieild.dart';
 import 'bloc/settings_bloc.dart';
 
 class SettingScreen extends StatelessWidget {
+  const SettingScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,14 +29,14 @@ class SettingScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
-            SettingFieldText(
+            const SettingFieldText(
               text: ConstantStrings.userSettings,
             ),
             BlocBuilder<UserBloc, UserState>(builder: (context, state) {
@@ -45,17 +47,17 @@ class SettingScreen extends StatelessWidget {
                 return Container();
               }
             }),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
-            SettingFieldText(
+            const SettingFieldText(
               text: ConstantStrings.other,
             ),
             GestureDetector(
                 onTap: () {
                   AppSettings.openAppSettings();
                 },
-                child: SettingsField(
+                child: const SettingsField(
                     ConstantStrings.appInfo, ConstantStrings.systemInfoScreen)),
             // Divider(color: Colors.grey.withOpacity(0.6)),
 
@@ -68,7 +70,7 @@ class SettingScreen extends StatelessWidget {
                     builder: (context, state) {
                       return SwitchListTile(
                           activeColor: Theme.of(context).primaryColor,
-                          title: Text('Dark Theme'),
+                          title: const Text('Dark Theme'),
                           value:
                               state.themeMode == ThemeMode.dark ? true : false,
                           onChanged: (val) {
