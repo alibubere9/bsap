@@ -1,0 +1,57 @@
+{
+    id: 1
+    companies: [
+        {
+            id:1,
+            roles: [
+                {
+                    id: 1,
+                    name: ""
+                },
+                {
+                    id: 2,
+                    name: ""
+                },
+                {
+                    id: 3,
+                    name: ""
+                }
+            ]
+        },
+        {
+            id:1,
+            roles: [
+                {
+                    id: 1,
+                    name: ""
+                },
+                {
+                    id: 2,
+                    name: ""
+                },
+                {
+                    id: 3,
+                    name: ""
+                }
+            ]
+        },
+        {
+            id:1,
+            roles: [
+                {
+                    id: 1,
+                    name: ""
+                },
+                {
+                    id: 2,
+                    name: ""
+                },
+                {
+                    id: 3,
+                    name: ""
+                }
+            ]
+        }
+
+    ]
+}

@@ -1,0 +1,23 @@
+Main.dart     ->   We have given default first route as  HomePage.dart
+   ||
+   \/
+HomePage.dart -> We are using authenticationBloc here so that,we can authenticate the state and render the screens accordingly.       
+                   The states and their respective screens are as follows:
+                                         ||
+                                         ||
+                                         \/
+InitialAuthentication  Unauthenticated  AuthenticatedState State   ForceUpdateState
+       ||                       ||                    ||                  ||
+       \/                       \/                    \/                  \/
+ Splash screen       LoginPage screen     it will dispatch the event   UpdateScreen()
+                                       CheckUserEvent() of UserBloc
+                                                      ||
+                                                      \/
+                                          further it will move to 
+                                               ConditionPage()
+
+
+
+
+
+

@@ -1,5 +1,11 @@
+import 'package:classified_app/data/repositories/company_selection_repo.dart';
 import 'package:classified_app/ui/article_view/article_view.dart';
+import 'package:classified_app/ui/company_selection/company_selection.dart';
 import 'package:classified_app/ui/faqs/faqs.dart';
+import 'package:classified_app/ui/home/home.dart';
+import 'package:classified_app/ui/login/login_page.dart';
+import 'package:classified_app/ui/module_type/module_type.dart';
+import 'package:classified_app/ui/role_selection/role_selection.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:classified_app/global/widgets/enlarged_images.dart';
@@ -28,9 +34,11 @@ import 'ui/register_user/register_user_page.dart';
 
 class RouteStrings {
   static const Home = '/';
-  static const ClassifiedList = '/classifieds';
-  static const ArticleList = '/articles';
-  static const SignUp = '/signup';
+  static const CompanyList = '/classifieds';
+  static const Dashboard = '/dashboard';
+  static const RoleSelectionList = '/roles';
+  static const ModuleSelectionList = '/modules';
+  static const Login = '/login';
   static const CategoryList = '/categories';
   static const SubCategoryList = '/subCategories';
   static const ClassifiedProfile = '/classified_profile';
@@ -72,12 +80,17 @@ class NavRouter {
     switch (settings.name) {
       case (RouteStrings.Home):
         return _transition(child: Home(), type: PageTransitionType.fade);
-      case (RouteStrings.ClassifiedList):
+      case (RouteStrings.CompanyList):
         return _transition(
-            child: ClassifiedListScreen(), type: PageTransitionType.fade);
-      case (RouteStrings.ArticleList):
+            child: CompanySelection(), type: PageTransitionType.fade);
+      case (RouteStrings.Dashboard):
+        return _transition(child: Dashboard(), type: PageTransitionType.fade);
+      case (RouteStrings.RoleSelectionList):
         return _transition(
-            child: ArticleListScreen(), type: PageTransitionType.fade);
+            child: RoleSelection(), type: PageTransitionType.fade);
+      case (RouteStrings.ModuleSelectionList):
+        return _transition(
+            child: ModuleSelection(), type: PageTransitionType.fade);
       case (RouteStrings.Faqs):
         return _transition(child: Faqs(), type: PageTransitionType.fade);
       case (RouteStrings.Notifications):
@@ -122,9 +135,9 @@ class NavRouter {
         return _transition(
             child: SettingScreen(),
             type: PageTransitionType.leftToRightWithFade);
-      case (RouteStrings.SignUp):
+      case (RouteStrings.Login):
         return _transition(
-            child: SignUpPage(), type: PageTransitionType.leftToRight);
+            child: LoginPage(), type: PageTransitionType.leftToRight);
       case (RouteStrings.WriteAReview):
         ReviewObj reviewObj = settings.arguments as ReviewObj;
         return _transition(

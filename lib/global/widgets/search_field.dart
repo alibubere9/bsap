@@ -124,7 +124,7 @@ class _SearchFieldState extends State<SearchField> {
     // } else {
     BlocProvider.of<ClassifiedListBloc>(context)
         .add(GetClassifiedsByName(value));
-    NavRouter.navKey!.currentState!.pushNamed(RouteStrings.ClassifiedList);
+   // NavRouter.navKey!.currentState!.pushNamed(RouteStrings.ClassifiedList);
     // }
   }
 }

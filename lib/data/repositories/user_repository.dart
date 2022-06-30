@@ -6,6 +6,8 @@ import 'package:classified_app/data/models/user_model.dart';
 import 'package:classified_app/data/repositories/interfaces/i_user_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../router.dart';
+
 const USER = 'user';
 const PHONE_NUMBER = "PHONE_NUMBER";
 
@@ -58,7 +60,7 @@ class UserRepository implements IUserRepository {
       String verificationId, String? smsCode) async {
     AuthCredential authCredential = PhoneAuthProvider.credential(
         verificationId: verificationId, smsCode: smsCode!);
-
+    // _firebaseAuth.currentUser!.linkWithCredential(authCredential);
     return await _firebaseAuth.signInWithCredential(authCredential);
   }
 
@@ -73,6 +75,7 @@ class UserRepository implements IUserRepository {
 
   Future<void> signOut() async {
     await _sharedPreferences.remove(USER);
+
     return _firebaseAuth.signOut();
   }
 

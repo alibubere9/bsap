@@ -36,23 +36,23 @@ class SettingScreen extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            const SettingFieldText(
-              text: ConstantStrings.userSettings,
-            ),
-            BlocBuilder<UserBloc, UserState>(builder: (context, state) {
-              if (state is RegisteredUserState) {
-                return SettingsField(
-                    ConstantStrings.displayName, state.user.username ?? '');
-              } else {
-                return Container();
-              }
-            }),
+            // const SettingFieldText(
+            //   text: ConstantStrings.userSettings,
+            // ),
+            // BlocBuilder<UserBloc, UserState>(builder: (context, state) {
+            //   if (state is RegisteredUserState) {
+            //     return SettingsField(
+            //         ConstantStrings.displayName, state.user.username ?? '');
+            //   } else {
+            //     return Container();
+            //   }
+            // }),
             const SizedBox(
               height: 8,
             ),
-            const SettingFieldText(
-              text: ConstantStrings.other,
-            ),
+            // const SettingFieldText(
+            //   text: ConstantStrings.other,
+            // ),
             GestureDetector(
                 onTap: () {
                   AppSettings.openAppSettings();
@@ -61,27 +61,27 @@ class SettingScreen extends StatelessWidget {
                     ConstantStrings.appInfo, ConstantStrings.systemInfoScreen)),
             // Divider(color: Colors.grey.withOpacity(0.6)),
 
-            BlocBuilder<SettingsBloc, SettingsState>(
-              builder: (context, state) {
-                return Visibility(
-                  visible: (state is SettingsLoaded &&
-                      state.environment == Environment.dev),
-                  child: BlocBuilder<ThemeBloc, ThemeState>(
-                    builder: (context, state) {
-                      return SwitchListTile(
-                          activeColor: Theme.of(context).primaryColor,
-                          title: const Text('Dark Theme'),
-                          value:
-                              state.themeMode == ThemeMode.dark ? true : false,
-                          onChanged: (val) {
-                            BlocProvider.of<ThemeBloc>(context)
-                                .add(ThemeEvent(val));
-                          });
-                    },
-                  ),
-                );
-              },
-            ),
+            // BlocBuilder<SettingsBloc, SettingsState>(
+            //   builder: (context, state) {
+            //     return Visibility(
+            //       visible: (state is SettingsLoaded &&
+            //           state.environment == Environment.dev),
+            //       child: BlocBuilder<ThemeBloc, ThemeState>(
+            //         builder: (context, state) {
+            //           return SwitchListTile(
+            //               activeColor: Theme.of(context).primaryColor,
+            //               title: const Text('Dark Theme'),
+            //               value:
+            //                   state.themeMode == ThemeMode.dark ? true : false,
+            //               onChanged: (val) {
+            //                 BlocProvider.of<ThemeBloc>(context)
+            //                     .add(ThemeEvent(val));
+            //               });
+            //         },
+            //       ),
+            //     );
+            //   },
+            // ),
 
             Divider(color: Colors.grey.withOpacity(0.6)),
 
@@ -126,8 +126,8 @@ class SettingScreen extends StatelessWidget {
               ConstantStrings.copyright,
               '',
               onTap: () {
-                NavRouter.navKey!.currentState!
-                    .pushNamed(RouteStrings.Copyright);
+                // NavRouter.navKey!.currentState!
+                //     .pushNamed(RouteStrings.Copyright);
               },
             ),
             Divider(color: Colors.grey.withOpacity(0.6)),
@@ -136,8 +136,8 @@ class SettingScreen extends StatelessWidget {
               ConstantStrings.termsAndcondition,
               '',
               onTap: () {
-                NavRouter.navKey!.currentState!
-                    .pushNamed(RouteStrings.TermsAndConditions);
+                // NavRouter.navKey!.currentState!
+                //     .pushNamed(RouteStrings.TermsAndConditions);
               },
             ),
             Divider(color: Colors.grey.withOpacity(0.6)),
@@ -146,7 +146,7 @@ class SettingScreen extends StatelessWidget {
               ConstantStrings.privacyPolicy,
               '',
               onTap: () {
-                NavRouter.navKey!.currentState!.pushNamed(RouteStrings.Privacy);
+                // NavRouter.navKey!.currentState!.pushNamed(RouteStrings.Privacy);
               },
             ),
             Divider(color: Colors.grey.withOpacity(0.6)),
@@ -155,8 +155,8 @@ class SettingScreen extends StatelessWidget {
               ConstantStrings.thirdPartyNoticies,
               '',
               onTap: () {
-                NavRouter.navKey!.currentState!
-                    .pushNamed(RouteStrings.ThirdPartyNotices);
+                // NavRouter.navKey!.currentState!
+                //     .pushNamed(RouteStrings.ThirdPartyNotices);
               },
             ),
             //Divider(color: Theme.of(context).primaryColor.withOpacity(0.6)),

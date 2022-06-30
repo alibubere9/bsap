@@ -6,6 +6,7 @@ import 'package:classified_app/data/repositories/interfaces/i_app_message_repo.d
 import 'package:classified_app/data/repositories/interfaces/i_article_repository.dart';
 import 'package:classified_app/data/repositories/interfaces/i_best_deal.dart';
 import 'package:classified_app/data/repositories/interfaces/i_carousel_repository.dart';
+import 'package:classified_app/data/repositories/interfaces/i_company_selection_repo.dart';
 import 'package:classified_app/data/repositories/interfaces/i_notification_repo.dart';
 import 'package:classified_app/data/repositories/interfaces/i_review_repository.dart';
 import 'package:classified_app/data/repositories/interfaces/i_sub_category_repository.dart';
@@ -29,6 +30,7 @@ import 'package:classified_app/ui/article_list/bloc/article_list_bloc.dart';
 import 'package:classified_app/ui/carousel/bloc/carousel_bloc.dart';
 import 'package:classified_app/ui/categories_list/bloc/category_list_bloc.dart';
 import 'package:classified_app/ui/classifield_profile/bloc/classified_profile_bloc.dart';
+import 'package:classified_app/ui/company_selection/bloc/company_selection_bloc.dart';
 import 'package:classified_app/ui/faqs/bloc/faqs_bloc.dart';
 import 'package:classified_app/ui/get_best_deal/bloc/bestdeal_bloc.dart';
 import 'package:classified_app/ui/banner-ad/bloc/banner_bloc.dart';
@@ -37,6 +39,7 @@ import 'package:classified_app/ui/review/bloc/review_bloc.dart';
 import 'package:classified_app/services/interfaces/i_user_service.dart';
 import 'package:classified_app/services/user_service.dart';
 import 'package:classified_app/ui/article_profile/bloc/article_profile_bloc.dart';
+import 'package:classified_app/ui/role_selection/bloc/role_selection_bloc.dart';
 import 'package:classified_app/ui/settings/bloc/settings_bloc.dart';
 import 'package:classified_app/ui/sub_categories_list/bloc/sub_category_bloc.dart';
 import 'package:classified_app/ui/user/bloc/user_bloc.dart';
@@ -66,6 +69,7 @@ import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'data/repositories/best_deal_repo.dart';
 import 'data/repositories/carousel_repository.dart';
+import 'data/repositories/company_selection_repo.dart';
 import 'data/repositories/faqs_repository.dart';
 import 'data/repositories/interfaces/i_app_message_repo.dart';
 import 'data/repositories/interfaces/i_best_deal.dart';
@@ -82,6 +86,7 @@ import 'ui/article_list/bloc/article_list_bloc.dart';
 import 'ui/categories_list/bloc/category_list_bloc.dart';
 import 'ui/classifield_profile/bloc/classified_profile_bloc.dart';
 import 'ui/login/bloc/login_bloc.dart';
+import 'ui/module_type/bloc/module_selection_bloc.dart';
 import 'ui/user/bloc/user_bloc.dart';
 
 final GetIt sl = GetIt.instance;
@@ -102,16 +107,9 @@ void _initEnvironment() {
 void _initRepositories() {
   sl.registerLazySingleton<IUserRepository>(
       () => UserRepository(sl(), sl(), sl(), sl()));
-  sl.registerLazySingleton<IClassifiedRepository>(
-      () => ClassifiedRepository(sl(), sl()));
-  sl.registerLazySingleton<IArticleRepository>(() => ArticleRepository(sl()));
-  sl.registerLazySingleton<ISubCategoryRepository>(
-      () => SubCategoryRepository(sl()));
-  sl.registerLazySingleton<IBannerRepository>(
-      () => BannerRepository(sl(), sl()));
-  sl.registerLazySingleton<IReviewRepository>(() => ReviewRepository(sl()));
-  sl.registerLazySingleton<INotificationRepository>(
-      () => NotificationRepository(sl(), sl()));
+  sl.registerLazySingleton<ICompanySelectionRepository>(
+      () => CompanySelectionRepository());
+
   sl.registerLazySingleton<IFaqsRepository>(() => FaqsRepository(sl()));
   sl.registerLazySingleton<IBestDealRepository>(() => BestDealRepository(sl()));
   sl.registerLazySingleton<ICarouselRepository>(() => CarouselRepository(sl()));
@@ -138,10 +136,11 @@ Future<void> _initExternal() async {
 
 void _initBloc() {
   sl.registerFactory(() => UserBloc(sl(), sl(), sl()));
-  sl.registerFactory(() => ClassifiedListBloc(sl()));
-  sl.registerFactory(() => ArticleListBloc(sl()));
-  sl.registerFactory(() => SubCategoryBloc(sl()));
+  sl.registerFactory(() => CompanySelectionBloc(sl()));
+  sl.registerFactory(() => RoleSelectionBloc(sl()));
+  sl.registerFactory(() => ModuleSelectionBloc(sl()));
   sl.registerFactory(() => LoginBloc(sl()));
+
   sl.registerFactory(() => ClassifiedProfileBloc(sl(), sl()));
   sl.registerFactory(() => ArticleProfileBloc(sl()));
   sl.registerFactory(() => FaqsBloc(sl()));

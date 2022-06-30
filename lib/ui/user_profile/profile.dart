@@ -104,7 +104,7 @@ class UserProfileScreen extends StatelessWidget {
                               constString: ConstantStrings.edit,
                               onTap: () {
                                 NavRouter.navKey!.currentState!
-                                    .pushNamed(RouteStrings.SignUp);
+                                    .pushNamed(RouteStrings.Login);
                               },
                             ),
                             NavigatorWidget(

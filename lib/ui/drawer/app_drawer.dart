@@ -9,6 +9,7 @@ import 'package:classified_app/ui/user/bloc/user_bloc.dart';
 import 'package:classified_app/utils/launch_native.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'const/strings.dart';
@@ -59,27 +60,27 @@ class AppDrawer extends StatelessWidget {
                             : Container();
                       },
                     ),
+                    // const SizedBox(
+                    //   height: 15,
+                    // ),
+                    // Divider(
+                    //   color: Theme.of(context).primaryColor,
+                    // ),
                     const SizedBox(
                       height: 15,
                     ),
-                    Divider(
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    DrawerItems(
-                      icon: FontAwesomeIcons.userEdit,
-                      text: AppDrawerStrings.editProfile,
-                      onTap: () {
-                        UserState userState =
-                            BlocProvider.of<UserBloc>(context).state;
-                        if (userState is RegisteredUserState) {
-                          NavRouter.navKey!.currentState!
-                              .popAndPushNamed(RouteStrings.SignUp);
-                        }
-                      },
-                    ),
+                    // DrawerItems(
+                    //   icon: FontAwesomeIcons.userEdit,
+                    //   text: AppDrawerStrings.editProfile,
+                    //   onTap: () {
+                    //     UserState userState =
+                    //         BlocProvider.of<UserBloc>(context).state;
+                    //     if (userState is RegisteredUserState) {
+                    //       NavRouter.navKey!.currentState!
+                    //           .popAndPushNamed(RouteStrings.SignUp);
+                    //     }
+                    //   },
+                    // ),
                     DrawerItems(
                       icon: FontAwesomeIcons.cog,
                       text: ConstantStrings.settings,
@@ -96,19 +97,19 @@ class AppDrawer extends StatelessWidget {
                             .popAndPushNamed(RouteStrings.Privacy);
                       },
                     ),
-                    DrawerItems(
-                      icon: FontAwesomeIcons.commentAlt,
-                      onTap: () {
-                        NavRouter.navKey!.currentState!
-                            .popAndPushNamed(RouteStrings.Feedback);
-                      },
-                      text: ConstantStrings.sendFeedback,
-                    ),
-                    DrawerItems(
-                      icon: Icons.star_border,
-                      text: AppDrawerStrings.rateUs,
-                      onTap: launchPlatforApp,
-                    ),
+                    // DrawerItems(
+                    //   icon: FontAwesomeIcons.commentAlt,
+                    //   onTap: () {
+                    //     NavRouter.navKey!.currentState!
+                    //         .popAndPushNamed(RouteStrings.Feedback);
+                    //   },
+                    //   text: ConstantStrings.sendFeedback,
+                    // ),
+                    // const DrawerItems(
+                    //   icon: Icons.star_border,
+                    //   text: AppDrawerStrings.rateUs,
+                    //   onTap: launchPlatforApp,
+                    // ),
                     DrawerItems(
                       icon: FontAwesomeIcons.exclamationCircle,
                       text: ConstantStrings.aboutUs,
@@ -121,9 +122,9 @@ class AppDrawer extends StatelessWidget {
                       icon: FontAwesomeIcons.comments,
                       text: 'FAQ\'s',
                       onTap: () {
-                        BlocProvider.of<FaqsBloc>(context).add(LoadFaqs());
-                        NavRouter.navKey!.currentState!
-                            .popAndPushNamed(RouteStrings.Faqs);
+                        // BlocProvider.of<FaqsBloc>(context).add(LoadFaqs());
+                        // NavRouter.navKey!.currentState!
+                        //     .popAndPushNamed(RouteStrings.Faqs);
                       },
                     ),
                     DrawerItems(
@@ -131,8 +132,9 @@ class AppDrawer extends StatelessWidget {
                       text: AppDrawerStrings.logout,
                       onTap: () {
                         BlocProvider.of<AuthenticationBloc>(context)
-                            .add(LoggedOutEvent());
+                            .add(LoggedOutEvent(context: context));
                         print(state);
+                        
                       },
                     ),
                   ],

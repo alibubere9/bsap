@@ -3,7 +3,6 @@ import 'package:classified_app/global/theme/textstyle.dart';
 import 'package:classified_app/global/widgets/logo_widget.dart';
 import 'package:classified_app/utils/app_messages.dart';
 import 'package:classified_app/utils/launch_native.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class UpdateScreen extends StatelessWidget {

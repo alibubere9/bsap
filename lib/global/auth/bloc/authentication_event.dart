@@ -22,6 +22,10 @@ class LoggedInEvent extends AuthenticationEvent {
 }
 
 class LoggedOutEvent extends AuthenticationEvent {
+  final BuildContext? context;
+
+  LoggedOutEvent({this.context});
+
   @override
   List<Object> get props => [];
 }

@@ -71,13 +71,13 @@ class SubCategoryListScreen extends StatelessWidget {
                                                   .category.isSpecialCategory ??
                                               false;
                                           if (isBhiwandiSpecial) {
-                                            sl<ClassifiedService>()
-                                                .addArticleBySubCategory(
-                                                    context, e);
+                                            // sl<ClassifiedService>()
+                                            //     .addArticleBySubCategory(
+                                            //         context, e);
                                           } else {
-                                            sl<ClassifiedService>()
-                                                .addClassifiedBySubCategory(
-                                                    context, e);
+                                            // sl<ClassifiedService>()
+                                            //     .addClassifiedBySubCategory(
+                                            //         context, e);
                                           }
                                         },
                                         title: Text(e.name!),

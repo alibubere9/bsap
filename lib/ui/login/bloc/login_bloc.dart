@@ -14,6 +14,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   LoginBloc(this._userRepository) : super(LoginInitial());
   String verID = '';
+  String phNumber = "";
   late StreamSubscription subscription;
   @override
   Stream<LoginState> mapEventToState(
@@ -21,6 +22,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ) async* {
     if (event is SendOtpEvent) {
       yield LoadingState();
+      phNumber = event.phoNo!;
       subscription = sendOtp(
         event.phoNo,
       ).listen((event) {
@@ -71,26 +73,31 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Stream<LoginEvent> sendOtp(String? phoNo) async* {
     StreamController<LoginEvent> eventStream = StreamController();
-    final phoneVerificationCompleted = (AuthCredential authCredential) async {
+    phoneVerificationCompleted(AuthCredential authCredential) async {
       await _userRepository.signInFirebase(authCredential);
       User? user = _userRepository.getUser();
       eventStream.add(LoginCompleteEvent(user));
       // eventStream.close();
-    };
-    final phoneVerificationFailed = (FirebaseAuthException authException) {
+    }
+
+    phoneVerificationFailed(FirebaseAuthException authException) {
       String? errorMessage = authException.message;
       print(errorMessage);
       eventStream.add(LoginExceptionEvent(errorMessage));
       eventStream.close();
-    };
-    final phoneCodeSent = (String verId, [int? forceResent]) {
-      this.verID = verId;
+    }
+
+    phoneCodeSent(String verId, [int? forceResent]) {
+      verID = verId;
       eventStream.add(OtpSendEvent());
-    };
-    final phoneCodeAutoRetrievalTimeout = (String verid) {
-      this.verID = verid;
+    }
+
+    phoneCodeAutoRetrievalTimeout(String verid) {
+      verID = verid;
       eventStream.close();
-    };
+    }
+
+    ;
 
     await _userRepository.sendOtp(
         phoNo,

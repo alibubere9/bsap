@@ -24,7 +24,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   ) async* {
     String? firebaseId = await userRepository.userId;
     String notificationToken = await notificationService.token ?? 'NO TOKEN';
-    UserModel user = await userRepository.checkUserOnTheServer(firebaseId!);
+    UserModel user = UserModel(username: "", email: "TalhaShaikh123@gmail.com");
+    //await userRepository.checkUserOnTheServer(firebaseId!);
     if (event is CheckUserEvent) {
       if (user.username == null) {
         yield AuthUserLoading();

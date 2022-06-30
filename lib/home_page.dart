@@ -5,6 +5,8 @@ import 'package:classified_app/ui/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'global/auth/bloc/authentication_bloc.dart';
+import 'ui/company_selection/bloc/company_selection_bloc.dart';
+import 'ui/company_selection/company_selection.dart';
 import 'ui/user/bloc/user_bloc.dart';
 import 'ui/user/condition_page.dart';
 
@@ -18,12 +20,11 @@ class Home extends StatelessWidget {
         } else if (state is Unauthenticated) {
           return LoginPage();
         } else if (state is AuthenticatedState) {
-          BlocProvider.of<UserBloc>(context).add(CheckUserEvent());
+          BlocProvider.of<CompanySelectionBloc>(context)
+              .add((SelectCompanyEvent()));
           return ConditionPage();
-        } else if (state is AlreadyLoggedInState) {
-          return Dashboard();
         } else if (state is ForceUpdateState) {
-           return UpdateScreen();
+          return UpdateScreen();
         } else {
           return SplashScreen();
         }

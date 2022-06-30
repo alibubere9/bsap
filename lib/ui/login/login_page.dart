@@ -54,14 +54,14 @@ class LoginForm extends StatelessWidget {
         // height: height,
         child: Stack(
           children: [
-            Positioned(
-                top: 600 * .10,
-                right: -MediaQuery.of(context).size.width * .4,
-                child: BezierContainer()),
-            Positioned(
-                bottom: 800 * .65,
-                left: -MediaQuery.of(context).size.width * .2,
-                child: BezierDarkContainer()),
+            // Positioned(
+            //     top: 600 * .10,
+            //     right: -MediaQuery.of(context).size.width * .4,
+            //     child: BezierContainer()),
+            // Positioned(
+            //     bottom: 800 * .65,
+            //     left: -MediaQuery.of(context).size.width * .2,
+            //     child: BezierDarkContainer()),
             // Positioned(
             //     bottom: -1500 * .20,
             //     right: -MediaQuery.of(context).size.width * .4,
@@ -225,7 +225,18 @@ class OtpInput extends StatelessWidget {
                 Text(
                   'Enter your One Time Password above',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
-                )
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                // ElevatedButton(
+                //   onPressed: () {
+                //     String phnNumber =
+                //         BlocProvider.of<LoginBloc>(context).phNumber;
+                //     BlocProvider.of<LoginBloc>(context).sendOtp(phnNumber);
+                //   },
+                //   child: Text("Resend OTP"),
+                // )
               ],
             ),
           ),

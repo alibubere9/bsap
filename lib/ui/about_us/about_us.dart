@@ -17,11 +17,11 @@ class AboutUs extends StatelessWidget {
         elevation: 0,
       ),
       body: Container(
-          child: Column(children: [
+          child: Column(children: const [
         Expanded(
-            child: WebViewWidget(
-          url: SystemSettingManager.getSetting(SystemSettingsTypes.aboutUs),
-        )),
+            child: WebViewWidget(url: "https://www.google.com/"
+                //SystemSettingManager.getSetting(SystemSettingsTypes.aboutUs),
+                )),
       ])),
     );
   }

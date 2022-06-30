@@ -9,18 +9,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../router.dart';
 
 class ClassifiedService {
-  void addClassifiedBySubCategory(
-      BuildContext context, SubCategoryModel subCategory) {
-    BlocProvider.of<ClassifiedListBloc>(context)
-        .add(GetClassifiedsBySubCategory(subCategory));
-    NavRouter.navKey!.currentState!.pushNamed(RouteStrings.ClassifiedList);
-  }
-  void addArticleBySubCategory(
-      BuildContext context, SubCategoryModel subCategory) {
-    BlocProvider.of<ArticleListBloc>(context)
-        .add(GetArticlesBySubCategory(subCategory));
-    NavRouter.navKey!.currentState!.pushNamed(RouteStrings.ArticleList);
-  }
+  // void addClassifiedBySubCategory(
+  //     BuildContext context, SubCategoryModel subCategory) {
+  //   BlocProvider.of<ClassifiedListBloc>(context)
+  //       .add(GetClassifiedsBySubCategory(subCategory));
+  //   NavRouter.navKey!.currentState!.pushNamed(RouteStrings.ClassifiedList);
+  // }
+  // void addArticleBySubCategory(
+  //     BuildContext context, SubCategoryModel subCategory) {
+  //   BlocProvider.of<ArticleListBloc>(context)
+  //       .add(GetArticlesBySubCategory(subCategory));
+  //   NavRouter.navKey!.currentState!.pushNamed(RouteStrings.ArticleList);
+  // }
 
   void selectAndNavigateToClassified(BuildContext context, int classifiedId) {
     BlocProvider.of<ClassifiedProfileBloc>(context)

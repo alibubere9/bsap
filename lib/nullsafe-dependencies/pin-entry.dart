@@ -41,7 +41,7 @@ class PinEntryTextFieldState extends State<PinEntryTextField> {
     _pin = List<String?>.filled(widget.fields, null, growable: true);
     _focusNodes = List<FocusNode?>.filled(widget.fields, null, growable: false);
     _textControllers = List<TextEditingController?>.filled(widget.fields, null, growable: false);
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
         if (widget.lastPin != null) {
           for (var i = 0; i < widget.lastPin!.length; i++) {

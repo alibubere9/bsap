@@ -9,12 +9,16 @@ import 'package:classified_app/ui/carousel/bloc/carousel_bloc.dart';
 import 'package:classified_app/ui/categories_list/bloc/category_list_bloc.dart';
 import 'package:classified_app/ui/classifield_list/bloc/classified_list_bloc.dart';
 import 'package:classified_app/ui/classifield_profile/bloc/classified_profile_bloc.dart';
+import 'package:classified_app/ui/company_selection/bloc/company_selection_bloc.dart';
 import 'package:classified_app/ui/faqs/bloc/faqs_bloc.dart';
 import 'package:classified_app/ui/get_best_deal/bloc/bestdeal_bloc.dart';
 import 'package:classified_app/ui/banner-ad/bloc/banner_bloc.dart';
 import 'package:classified_app/ui/home/bloc/home_bloc.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:classified_app/ui/module_type/bloc/module_selection_bloc.dart';
 import 'package:classified_app/ui/notifications/bloc/notification_bloc.dart';
 import 'package:classified_app/ui/review/bloc/review_bloc.dart';
+import 'package:classified_app/ui/role_selection/bloc/role_selection_bloc.dart';
 import 'package:classified_app/ui/settings/bloc/settings_bloc.dart';
 import 'package:classified_app/ui/sub_categories_list/bloc/sub_category_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -76,7 +80,12 @@ class MyApp extends StatelessWidget {
           create: (context) => di.sl<AuthenticationBloc>()..add(AppStarted())),
       BlocProvider<UserBloc>(
           create: (context) => di.sl<UserBloc>()..add(CheckUserEvent())),
-      //BlocProvider<ReviewBloc>(create: (context) => di.sl<ReviewBloc>()),
+      BlocProvider<CompanySelectionBloc>(
+          create: (context) => di.sl<CompanySelectionBloc>()),
+      BlocProvider<RoleSelectionBloc>(
+          create: (context) => di.sl<RoleSelectionBloc>()),
+      BlocProvider<ModuleSelectionBloc>(
+          create: (context) => di.sl<ModuleSelectionBloc>()),
       BlocProvider<ThemeBloc>(
           create: (context) =>
               di.sl<ThemeBloc>()..add(ThemeEvent(isDarkTheme))),
