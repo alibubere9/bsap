@@ -14,7 +14,6 @@ import 'package:classified_app/ui/faqs/bloc/faqs_bloc.dart';
 import 'package:classified_app/ui/get_best_deal/bloc/bestdeal_bloc.dart';
 import 'package:classified_app/ui/banner-ad/bloc/banner_bloc.dart';
 import 'package:classified_app/ui/home/bloc/home_bloc.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:classified_app/ui/module_type/bloc/module_selection_bloc.dart';
 import 'package:classified_app/ui/notifications/bloc/notification_bloc.dart';
 import 'package:classified_app/ui/review/bloc/review_bloc.dart';
