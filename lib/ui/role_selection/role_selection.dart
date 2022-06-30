@@ -84,6 +84,7 @@ class RoleSelection extends StatelessWidget {
                                                             CompanySelectionBloc>(
                                                         context)
                                                     .add(SelectModuleEvent(
+                                                      moduleValue: 
                                                         state.moduleType));
                                                 // NavRouter.navKey!.currentState!
                                                 //     .pushReplacementNamed(

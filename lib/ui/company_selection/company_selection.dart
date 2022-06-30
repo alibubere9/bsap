@@ -33,9 +33,9 @@ class _CompanySelectionState extends State<CompanySelection> {
                               .add(SelectCompanyEvent());
                         } else if (state is SelectModuleOnPageThree) {
                           if (BlocProvider.of<CompanySelectionBloc>(context)
-                                  .stringRolesList!
-                                  .length ==
-                              1) {
+                                  .isRoleSkipped ==
+                              true) {
+                            print("true");
                             BlocProvider.of<CompanySelectionBloc>(context)
                                 .add(SelectCompanyEvent());
                           } else {
@@ -69,9 +69,17 @@ class _CompanySelectionState extends State<CompanySelection> {
                             child: SingleChildScrollView(
                               child: Column(children: [
                                 const Logo(width: 100),
-                                const Padding(
+                                Padding(
                                   padding: EdgeInsets.symmetric(vertical: 20),
-                                  child: Text("Choose a company",
+                                  child: Text(
+                                      (state is SelectCompanyOnPageOne)
+                                          ? "Choose a company"
+                                          : (state is SelectRoleOnPageTwo)
+                                              ? "Choose a Role"
+                                              : (state
+                                                      is SelectModuleOnPageThree)
+                                                  ? "Choose a Module Type"
+                                                  : "Choose a Company",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 28)),
@@ -140,8 +148,10 @@ class _CompanySelectionState extends State<CompanySelection> {
                                                       BlocProvider.of<
                                                                   CompanySelectionBloc>(
                                                               context)
-                                                          .add(
-                                                              SelectModuleEvent(
+                                                          .add(SelectModuleEvent(
+                                                              isRoleSkipped:
+                                                                  true,
+                                                              moduleValue:
                                                                   moduleType));
                                                       print(state);
                                                     }
@@ -195,17 +205,6 @@ class _CompanySelectionState extends State<CompanySelection> {
                                                                   moduleType] ==
                                                               ModuleType
                                                                   .sizing) {
-                                                        // BlocProvider.of<AuthenticationBloc>(
-                                                        //         context)
-                                                        //     .add(AppStarted());
-                                                        // NavRouter
-                                                        //     .navKey!.currentState!
-                                                        //     .popUntil((route) =>
-                                                        //         route.isFirst);
-                                                        // BlocProvider.of<
-                                                        //             AuthenticationBloc>(
-                                                        //         context)
-                                                        //     .add(AppStarted());
                                                         NavRouter.navKey!
                                                             .currentState!
                                                             .pushReplacementNamed(
@@ -216,7 +215,9 @@ class _CompanySelectionState extends State<CompanySelection> {
                                                                     CompanySelectionBloc>(
                                                                 context)
                                                             .add(SelectModuleEvent(
-                                                                state
+                                                                isRoleSkipped:
+                                                                    false,
+                                                                moduleValue: state
                                                                     .moduleType));
                                                         // NavRouter.navKey!.currentState!
                                                         //     .pushReplacementNamed(

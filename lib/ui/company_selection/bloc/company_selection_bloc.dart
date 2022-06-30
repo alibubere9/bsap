@@ -16,6 +16,7 @@ class CompanySelectionBloc
   String stringRoles = "";
   String? companyName = "";
   int? moduleValue;
+  bool isRoleSkipped = false;
 
   CompanySelectionBloc(this.companySelectionRepository)
       : super(CompanySelectionInitial()) {
@@ -54,6 +55,7 @@ class CompanySelectionBloc
 
     on<SelectModuleEvent>((event, emit) {
       List<String>? stringModuleList = [];
+      isRoleSkipped = event.isRoleSkipped!;
       List<String>? stringList = ["Textile", "Sizing"];
       int? index = event.moduleValue;
       ModuleType mt = ModuleType.values.elementAt(index!);
