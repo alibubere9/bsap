@@ -70,10 +70,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'data/repositories/best_deal_repo.dart';
 import 'data/repositories/carousel_repository.dart';
 import 'data/repositories/company_selection_repo.dart';
+import 'data/repositories/entry_section_repo.dart';
 import 'data/repositories/faqs_repository.dart';
 import 'data/repositories/interfaces/i_app_message_repo.dart';
 import 'data/repositories/interfaces/i_best_deal.dart';
 import 'data/repositories/interfaces/i_carousel_repository.dart';
+import 'data/repositories/interfaces/i_entry_section_repo.dart';
 import 'data/repositories/interfaces/i_faqs_repository.dart';
 import 'data/repositories/interfaces/i_notification_repo.dart';
 import 'data/repositories/interfaces/i_review_repository.dart';
@@ -113,7 +115,8 @@ void _initRepositories() {
   sl.registerLazySingleton<IFaqsRepository>(() => FaqsRepository(sl()));
   sl.registerLazySingleton<IBestDealRepository>(() => BestDealRepository(sl()));
   sl.registerLazySingleton<ICarouselRepository>(() => CarouselRepository(sl()));
-  sl.registerLazySingleton<ICategoryRepository>(() => CategoryRepository(sl()));
+  sl.registerLazySingleton<IEntrySectionRepository>(
+      () => EntrySectionRepository());
   sl.registerLazySingleton<ISystemInfoRepository>(
       () => SystemInfoRepository(sl()));
   sl.registerLazySingleton<IAppMessageRepository>(

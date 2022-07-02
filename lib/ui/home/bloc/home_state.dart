@@ -10,9 +10,9 @@ class HomeLoading extends HomeState {
 }
 
 class HomeLoaded extends HomeState {
-  final List<CategoryModel> categories;
+  final List<EntrySectionModel>? entrySectionList;
 
-  HomeLoaded(this.categories);
+  HomeLoaded({this.entrySectionList});
   @override
-  List<Object> get props => [categories];
+  List<Object> get props => [entrySectionList!];
 }
