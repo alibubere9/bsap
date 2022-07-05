@@ -11,9 +11,10 @@ class AlphabetScrollListHeader {
   final Icon icon;
   final IndexedHeight indexedHeaderHeight;
 
-  AlphabetScrollListHeader({required this.widgetList,
-    required this.icon,
-    required this.indexedHeaderHeight});
+  AlphabetScrollListHeader(
+      {required this.widgetList,
+      required this.icon,
+      required this.indexedHeaderHeight});
 }
 
 class _SpecialHeaderAlphabet {
@@ -40,9 +41,9 @@ class AlphabetListScrollView extends StatefulWidget {
       this.highlightTextStyle = const TextStyle(color: Colors.red),
       this.normalTextStyle = const TextStyle(color: Colors.black),
       this.showPreview = false,
-        this.headerWidgetList = const [],
-        required this.indexedHeight,
-        this.keyboardUsage = false})
+      this.headerWidgetList = const [],
+      required this.indexedHeight,
+      this.keyboardUsage = false})
       : super(key: key);
 
   @override
@@ -112,7 +113,7 @@ class _AlphabetListScrollViewState extends State<AlphabetListScrollView> {
   @override
   void initState() {
     _initList();
-    WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
+    WidgetsBinding.instance?.addPostFrameCallback(_afterLayout);
     super.initState();
     _updateStrList();
     _initScrollCallback();
@@ -223,13 +224,15 @@ class _AlphabetListScrollViewState extends State<AlphabetListScrollView> {
   }
 
   _getSideSizes() {
-    final RenderBox renderBoxRed = _sideKey.currentContext!.findRenderObject() as RenderBox;
+    final RenderBox renderBoxRed =
+        _sideKey.currentContext!.findRenderObject() as RenderBox;
     final sizeRed = renderBoxRed.size;
     sideHeight = sizeRed.height;
   }
 
   _getScreenHeight() {
-    final RenderBox renderBoxRed = _mainKey.currentContext!.findRenderObject() as RenderBox;
+    final RenderBox renderBoxRed =
+        _mainKey.currentContext!.findRenderObject() as RenderBox;
     final sizeRed = renderBoxRed.size;
     screenHeight = sizeRed.height;
   }
@@ -269,7 +272,6 @@ class _AlphabetListScrollViewState extends State<AlphabetListScrollView> {
   }
 
   _select(int index) async {
-    
     var height = heightMap[alphabetList[index]!]!;
     controller.jumpTo(height);
 //    controller.scrollToIndex(
@@ -440,7 +442,7 @@ class _AlphabetListScollViewState extends State<_AlphabetListScollView> {
 
       if (widget.strList![x]!.length > 1) {
         var header =
-        widget.specialList.firstWhere((sp) => sp.id == widget.strList![x]);
+            widget.specialList.firstWhere((sp) => sp.id == widget.strList![x]);
         textview = IconTheme(
           data: IconThemeData(
             size: 18,

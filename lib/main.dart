@@ -7,6 +7,7 @@ import 'package:classified_app/ui/article_list/bloc/article_list_bloc.dart';
 import 'package:classified_app/ui/article_profile/bloc/article_profile_bloc.dart';
 import 'package:classified_app/ui/carousel/bloc/carousel_bloc.dart';
 import 'package:classified_app/ui/categories_list/bloc/category_list_bloc.dart';
+import 'package:classified_app/ui/challan_list/challan_list.dart';
 import 'package:classified_app/ui/classifield_list/bloc/classified_list_bloc.dart';
 import 'package:classified_app/ui/classifield_profile/bloc/classified_profile_bloc.dart';
 import 'package:classified_app/ui/company_selection/bloc/company_selection_bloc.dart';
@@ -60,7 +61,8 @@ class MyApp extends StatelessWidget {
           themeMode: state.themeMode,
           theme: Themes.lightThemeData,
           darkTheme: Themes.darkThemeData,
-          initialRoute: RouteStrings.Home,
+          home: ChallanList(),
+          // initialRoute: RouteStrings.Home,
           onGenerateRoute: (settings) => NavRouter.onGenerateRoute(settings),
         );
       },
