@@ -19,16 +19,17 @@ class SelectRoleEvent extends CompanySelectionEvent {
   final String? roles;
   final int? moduleType;
 
-  SelectRoleEvent(this.roles, this.companyName,this.moduleType);
+  SelectRoleEvent(this.roles, this.companyName, this.moduleType);
 
   @override
-  List<Object> get props => [roles!, companyName!,moduleType!];
+  List<Object> get props => [roles!, companyName!, moduleType!];
 }
 
 class SelectModuleEvent extends CompanySelectionEvent {
+  final bool? isRoleSkipped;
   final int? moduleValue;
 
-  SelectModuleEvent(this.moduleValue);
+  SelectModuleEvent({this.moduleValue, this.isRoleSkipped});
 
   @override
   List<Object> get props => [moduleValue!];
