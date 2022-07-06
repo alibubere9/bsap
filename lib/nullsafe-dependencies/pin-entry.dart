@@ -40,8 +40,9 @@ class PinEntryTextFieldState extends State<PinEntryTextField> {
     super.initState();
     _pin = List<String?>.filled(widget.fields, null, growable: true);
     _focusNodes = List<FocusNode?>.filled(widget.fields, null, growable: false);
-    _textControllers = List<TextEditingController?>.filled(widget.fields, null, growable: false);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    _textControllers = List<TextEditingController?>.filled(widget.fields, null,
+        growable: false);
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
       setState(() {
         if (widget.lastPin != null) {
           for (var i = 0; i < widget.lastPin!.length; i++) {
@@ -86,7 +87,7 @@ class PinEntryTextFieldState extends State<PinEntryTextField> {
     }
     if (_textControllers[i] == null) {
       _textControllers[i] = TextEditingController();
-      if (widget.lastPin != null ) {
+      if (widget.lastPin != null) {
         _textControllers[i]!.text = widget.lastPin![i];
       }
     }
@@ -94,7 +95,6 @@ class PinEntryTextFieldState extends State<PinEntryTextField> {
     _focusNodes[i]!.addListener(() {
       if (_focusNodes[i]!.hasFocus) {}
     });
-
 
     return Container(
       width: widget.fieldWidth,
@@ -121,14 +121,14 @@ class PinEntryTextFieldState extends State<PinEntryTextField> {
           });
           if (i + 1 != widget.fields) {
             _focusNodes[i]!.unfocus();
-            if ( _pin[i] == '') {
+            if (_pin[i] == '') {
               FocusScope.of(context).requestFocus(_focusNodes[i - 1]);
             } else {
               FocusScope.of(context).requestFocus(_focusNodes[i + 1]);
             }
           } else {
             _focusNodes[i]!.unfocus();
-            if ( _pin[i] == '') {
+            if (_pin[i] == '') {
               FocusScope.of(context).requestFocus(_focusNodes[i - 1]);
             }
           }
@@ -150,4 +150,3 @@ class PinEntryTextFieldState extends State<PinEntryTextField> {
     return textfields;
   }
 }
-

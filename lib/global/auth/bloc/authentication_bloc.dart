@@ -8,7 +8,6 @@ import 'package:classified_app/services/interfaces/i_force_update.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';
