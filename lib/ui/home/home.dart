@@ -1,5 +1,6 @@
 import 'package:classified_app/global/auth/bloc/authentication_bloc.dart';
 import 'package:classified_app/global/widgets/logo_widget.dart';
+import 'package:classified_app/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:classified_app/const/padding.dart';
@@ -65,55 +66,67 @@ class Dashboard extends StatelessWidget {
                                       physics: BouncingScrollPhysics(),
                                       shrinkWrap: true,
                                       itemBuilder: (context, index) {
-                                        return Card(
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            child: ListTile(
-                                                minLeadingWidth: 12,
-                                                leading: IconMap.copyColor(
-                                                  IconMap.iconById(state
-                                                      .entrySectionList![index]
-                                                      .iconId)!,
-                                                  size: 33,
-                                                  color: (state
-                                                              .entrySectionList![
-                                                                  index]
-                                                              .color !=
-                                                          null)
-                                                      ? ColorExtensions.fromHex(
-                                                          state
-                                                              .entrySectionList![
-                                                                  index]
-                                                              .color!)
-                                                      : Theme.of(context)
-                                                          .primaryColor,
-                                                ),
-                                                title: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          right: 0.0),
-                                                  child: Text(
-                                                      state
-                                                          .entrySectionList![
-                                                              index]
-                                                          .name!,
-                                                      style: TextStyle(
-                                                          fontSize: 17,
-                                                          fontWeight:
-                                                              FontWeight.w400)),
-                                                ),
-                                                subtitle: Text(
-                                                  state.entrySectionList![index]
-                                                      .subName!,
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      fontSize: 14),
-                                                )),
-                                            decoration: BoxDecoration(
-                                                //color: Colors.grey.withOpacity(0.1),
-                                                borderRadius:
-                                                    BorderRadius.circular(15)),
+                                        return GestureDetector(
+                                          onTap: (() {
+                                            NavRouter.navKey!.currentState!
+                                                .pushNamed(
+                                                    RouteStrings.MeterEntry);
+                                          }),
+                                          child: Card(
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              child: ListTile(
+                                                  minLeadingWidth: 12,
+                                                  leading: IconMap.copyColor(
+                                                    IconMap.iconById(state
+                                                        .entrySectionList![
+                                                            index]
+                                                        .iconId)!,
+                                                    size: 33,
+                                                    color: (state
+                                                                .entrySectionList![
+                                                                    index]
+                                                                .color !=
+                                                            null)
+                                                        ? ColorExtensions
+                                                            .fromHex(state
+                                                                .entrySectionList![
+                                                                    index]
+                                                                .color!)
+                                                        : Theme.of(context)
+                                                            .primaryColor,
+                                                  ),
+                                                  title: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            right: 0.0),
+                                                    child: Text(
+                                                        state
+                                                            .entrySectionList![
+                                                                index]
+                                                            .name!,
+                                                        style: TextStyle(
+                                                            fontSize: 17,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400)),
+                                                  ),
+                                                  subtitle: Text(
+                                                    state
+                                                        .entrySectionList![
+                                                            index]
+                                                        .subName!,
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        fontSize: 14),
+                                                  )),
+                                              decoration: BoxDecoration(
+                                                  //color: Colors.grey.withOpacity(0.1),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15)),
+                                            ),
                                           ),
                                         );
                                       })

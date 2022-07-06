@@ -77,9 +77,11 @@ import 'data/repositories/interfaces/i_best_deal.dart';
 import 'data/repositories/interfaces/i_carousel_repository.dart';
 import 'data/repositories/interfaces/i_entry_section_repo.dart';
 import 'data/repositories/interfaces/i_faqs_repository.dart';
+import 'data/repositories/interfaces/i_meter_entry_repo.dart';
 import 'data/repositories/interfaces/i_notification_repo.dart';
 import 'data/repositories/interfaces/i_review_repository.dart';
 import 'data/repositories/interfaces/i_syst_setting_repo.dart';
+import 'data/repositories/meter_entry_repo.dart';
 import 'data/repositories/notification.dart';
 import 'data/repositories/review_repository.dart';
 import 'data/repositories/system_settings_repo.dart';
@@ -117,6 +119,7 @@ void _initRepositories() {
   sl.registerLazySingleton<ICarouselRepository>(() => CarouselRepository(sl()));
   sl.registerLazySingleton<IEntrySectionRepository>(
       () => EntrySectionRepository());
+  sl.registerLazySingleton<IMeterEntryRepository>(() => MeterEntryRepository());
   sl.registerLazySingleton<ISystemInfoRepository>(
       () => SystemInfoRepository(sl()));
   sl.registerLazySingleton<IAppMessageRepository>(
