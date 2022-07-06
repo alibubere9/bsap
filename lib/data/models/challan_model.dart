@@ -8,8 +8,10 @@ class ChallanModel extends Equatable {
   final String? item;
   final String? desgin;
   final int? pcs;
+  final int? id;
 
   const ChallanModel({
+    this.id,
     this.challanNo,
     this.party,
     this.item,
@@ -22,7 +24,8 @@ class ChallanModel extends Equatable {
         party: data['party'] as String?,
         item: data['item'] as String?,
         desgin: data['desgin'] as String?,
-        pcs: data['Pcs'] as int?,
+        pcs: data['pcs'] as int?,
+        id: data['id'] as int,
       );
 
   Map<String, dynamic> toMap() => {
@@ -30,7 +33,8 @@ class ChallanModel extends Equatable {
         'party': party,
         'item': item,
         'desgin': desgin,
-        'Pcs': pcs,
+        'pcs': pcs,
+        'id': id,
       };
 
   /// `dart:convert`
@@ -53,12 +57,12 @@ class ChallanModel extends Equatable {
     int? pcs,
   }) {
     return ChallanModel(
-      challanNo: challanNo ?? this.challanNo,
-      party: party ?? this.party,
-      item: item ?? this.item,
-      desgin: desgin ?? this.desgin,
-      pcs: pcs ?? this.pcs,
-    );
+        challanNo: challanNo ?? this.challanNo,
+        party: party ?? this.party,
+        item: item ?? this.item,
+        desgin: desgin ?? this.desgin,
+        pcs: pcs ?? this.pcs,
+        id: id ?? this.id);
   }
 
   @override

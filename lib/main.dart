@@ -7,6 +7,7 @@ import 'package:classified_app/ui/article_list/bloc/article_list_bloc.dart';
 import 'package:classified_app/ui/article_profile/bloc/article_profile_bloc.dart';
 import 'package:classified_app/ui/carousel/bloc/carousel_bloc.dart';
 import 'package:classified_app/ui/categories_list/bloc/category_list_bloc.dart';
+import 'package:classified_app/ui/challan_list/bloc/challan_bloc.dart';
 import 'package:classified_app/ui/challan_list/challan_list.dart';
 import 'package:classified_app/ui/classifield_list/bloc/classified_list_bloc.dart';
 import 'package:classified_app/ui/classifield_profile/bloc/classified_profile_bloc.dart';
@@ -74,7 +75,10 @@ class MyApp extends StatelessWidget {
     return [
       BlocProvider<HomeBloc>(
           create: (context) => di.sl<HomeBloc>()..add(LoadHome())),
-      // BlocProvider<FaqsBloc>(create: (context) => di.sl<FaqsBloc>()),
+      BlocProvider<ChallanBloc>(
+          create: (context) => di.sl<ChallanBloc>()
+            //!Remove this initial call as soon as there is code on Dashboard linking with challlan list...
+            ..add(LoadChallan())),
       // BlocProvider<NotificationBloc>(
       //     create: (context) => di.sl<NotificationBloc>()),
       BlocProvider<AuthenticationBloc>(

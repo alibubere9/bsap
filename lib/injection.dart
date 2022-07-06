@@ -2,10 +2,12 @@ import 'package:classified_app/data/repositories/app_message_repo.dart';
 import 'package:classified_app/data/repositories/article_repository.dart';
 import 'package:classified_app/data/repositories/best_deal_repo.dart';
 import 'package:classified_app/data/repositories/carousel_repository.dart';
+import 'package:classified_app/data/repositories/chaalan_repository.dart';
 import 'package:classified_app/data/repositories/interfaces/i_app_message_repo.dart';
 import 'package:classified_app/data/repositories/interfaces/i_article_repository.dart';
 import 'package:classified_app/data/repositories/interfaces/i_best_deal.dart';
 import 'package:classified_app/data/repositories/interfaces/i_carousel_repository.dart';
+import 'package:classified_app/data/repositories/interfaces/i_challan_repository.dart';
 import 'package:classified_app/data/repositories/interfaces/i_company_selection_repo.dart';
 import 'package:classified_app/data/repositories/interfaces/i_notification_repo.dart';
 import 'package:classified_app/data/repositories/interfaces/i_review_repository.dart';
@@ -29,6 +31,7 @@ import 'package:classified_app/services/notification_service.dart';
 import 'package:classified_app/ui/article_list/bloc/article_list_bloc.dart';
 import 'package:classified_app/ui/carousel/bloc/carousel_bloc.dart';
 import 'package:classified_app/ui/categories_list/bloc/category_list_bloc.dart';
+import 'package:classified_app/ui/challan_list/bloc/challan_bloc.dart';
 import 'package:classified_app/ui/classifield_profile/bloc/classified_profile_bloc.dart';
 import 'package:classified_app/ui/company_selection/bloc/company_selection_bloc.dart';
 import 'package:classified_app/ui/faqs/bloc/faqs_bloc.dart';
@@ -113,6 +116,7 @@ void _initRepositories() {
       () => CompanySelectionRepository());
 
   sl.registerLazySingleton<IFaqsRepository>(() => FaqsRepository(sl()));
+  sl.registerLazySingleton<IChallanRepository>(() => ChallanRepository());
   sl.registerLazySingleton<IBestDealRepository>(() => BestDealRepository(sl()));
   sl.registerLazySingleton<ICarouselRepository>(() => CarouselRepository(sl()));
   sl.registerLazySingleton<IEntrySectionRepository>(
@@ -157,6 +161,7 @@ void _initBloc() {
   sl.registerFactory(() => ThemeBloc(sl()));
   sl.registerFactory(() => SettingsBloc(sl(), sl()));
   sl.registerFactory(() => CarouselBloc(sl()));
+  sl.registerFactory(() => ChallanBloc(sl()));
 }
 
 void _initServices() {
