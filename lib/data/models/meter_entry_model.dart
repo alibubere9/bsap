@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 
 class MeterEntryModel extends Equatable {
   final int? srNo;
@@ -10,16 +11,27 @@ class MeterEntryModel extends Equatable {
   final String? weight;
   final String? numberOfTP;
   final String? remark;
+  TextEditingController? takhaNoController = TextEditingController();
+  TextEditingController? meterController = TextEditingController();
+  TextEditingController? barcodeNoController = TextEditingController();
+  TextEditingController? noOfTPController = TextEditingController();
+  TextEditingController? weightController = TextEditingController();
+  TextEditingController? remarkController = TextEditingController();
 
-  MeterEntryModel({
-    this.srNo,
-    this.takhaNo,
-    this.barCode,
-    this.meter,
-    this.weight,
-    this.numberOfTP,
-    this.remark,
-  });
+  MeterEntryModel(
+      {this.srNo,
+      this.takhaNo,
+      this.barCode,
+      this.meter,
+      this.weight,
+      this.numberOfTP,
+      this.remark,
+      this.takhaNoController,
+      this.barcodeNoController,
+      this.meterController,
+      this.weightController,
+      this.noOfTPController,
+      this.remarkController});
 
   MeterEntryModel copyWith({
     int? srNo,

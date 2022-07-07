@@ -38,6 +38,7 @@ import 'package:classified_app/ui/faqs/bloc/faqs_bloc.dart';
 import 'package:classified_app/ui/get_best_deal/bloc/bestdeal_bloc.dart';
 import 'package:classified_app/ui/banner-ad/bloc/banner_bloc.dart';
 import 'package:classified_app/ui/login/bloc/login_bloc.dart';
+import 'package:classified_app/ui/meter_entry/bloc/meter_entry_bloc.dart';
 import 'package:classified_app/ui/review/bloc/review_bloc.dart';
 import 'package:classified_app/services/interfaces/i_user_service.dart';
 import 'package:classified_app/services/user_service.dart';
@@ -149,6 +150,7 @@ void _initBloc() {
   sl.registerFactory(() => CompanySelectionBloc(sl()));
   sl.registerFactory(() => RoleSelectionBloc(sl()));
   sl.registerFactory(() => ModuleSelectionBloc(sl()));
+  sl.registerFactory(() => MeterEntryBloc(sl()));
   sl.registerFactory(() => LoginBloc(sl()));
 
   sl.registerFactory(() => ClassifiedProfileBloc(sl(), sl()));

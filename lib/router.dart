@@ -1,5 +1,6 @@
 import 'package:classified_app/data/repositories/company_selection_repo.dart';
 import 'package:classified_app/ui/article_view/article_view.dart';
+import 'package:classified_app/ui/challan_list/challan_list.dart';
 import 'package:classified_app/ui/company_selection/company_selection.dart';
 import 'package:classified_app/ui/faqs/faqs.dart';
 import 'package:classified_app/ui/home/home.dart';
@@ -40,8 +41,9 @@ class RouteStrings {
   static const RoleSelectionList = '/roles';
   static const ModuleSelectionList = '/modules';
   static const MeterEntry = '/meter_entry';
-  static const Login = '/login';
   static const CategoryList = '/categories';
+  static const Login = '/login';
+  static const ChallanList = '/challan_list';
   static const SubCategoryList = '/subCategories';
   static const ClassifiedProfile = '/classified_profile';
   static const ArticleProfile = '/article_profile';
@@ -84,6 +86,8 @@ class NavRouter {
         return _transition(child: Home(), type: PageTransitionType.fade);
       case (RouteStrings.MeterEntry):
         return _transition(child: MeterEntry(), type: PageTransitionType.fade);
+      case (RouteStrings.ChallanList):
+        return _transition(child: ChallanList(), type: PageTransitionType.fade);
       case (RouteStrings.CompanyList):
         return _transition(
             child: CompanySelection(), type: PageTransitionType.fade);

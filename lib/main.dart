@@ -16,6 +16,7 @@ import 'package:classified_app/ui/faqs/bloc/faqs_bloc.dart';
 import 'package:classified_app/ui/get_best_deal/bloc/bestdeal_bloc.dart';
 import 'package:classified_app/ui/banner-ad/bloc/banner_bloc.dart';
 import 'package:classified_app/ui/home/bloc/home_bloc.dart';
+import 'package:classified_app/ui/meter_entry/bloc/meter_entry_bloc.dart';
 import 'package:classified_app/ui/module_type/bloc/module_selection_bloc.dart';
 import 'package:classified_app/ui/notifications/bloc/notification_bloc.dart';
 import 'package:classified_app/ui/review/bloc/review_bloc.dart';
@@ -62,8 +63,7 @@ class MyApp extends StatelessWidget {
           themeMode: state.themeMode,
           theme: Themes.lightThemeData,
           darkTheme: Themes.darkThemeData,
-          home: ChallanList(),
-          // initialRoute: RouteStrings.Home,
+          initialRoute: RouteStrings.Home,
           onGenerateRoute: (settings) => NavRouter.onGenerateRoute(settings),
         );
       },
@@ -79,8 +79,8 @@ class MyApp extends StatelessWidget {
           create: (context) => di.sl<ChallanBloc>()
             //!Remove this initial call as soon as there is code on Dashboard linking with challlan list...
             ..add(LoadChallan())),
-      // BlocProvider<NotificationBloc>(
-      //     create: (context) => di.sl<NotificationBloc>()),
+      BlocProvider<MeterEntryBloc>(
+          create: (context) => di.sl<MeterEntryBloc>()),
       BlocProvider<AuthenticationBloc>(
           create: (context) => di.sl<AuthenticationBloc>()..add(AppStarted())),
       BlocProvider<UserBloc>(

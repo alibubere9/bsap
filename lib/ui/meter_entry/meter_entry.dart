@@ -1,7 +1,11 @@
+import 'package:classified_app/data/models/meter_entry_model.dart';
 import 'package:classified_app/global/widgets/button.dart';
+import 'package:classified_app/ui/challan_list/bloc/challan_bloc.dart';
+import 'package:classified_app/ui/meter_entry/bloc/meter_entry_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MeterEntry extends StatefulWidget {
@@ -12,30 +16,239 @@ class MeterEntry extends StatefulWidget {
 }
 
 class _MeterEntryState extends State<MeterEntry> {
+  int pcs = 0;
+  void _generate(int pcs) {
+    int remainder = (pcs % perPageConst);
+    if (remainder == 0) {
+      lastPage = (pcs ~/ 5);
+    } else {
+      lastPage = (pcs / 5).toDouble().ceil();
+    }
+    print(lastPage);
+
+    List.generate(pcs, (index) {
+      takhaNoController.add(TextEditingController(text: "0"));
+      meterController.add(TextEditingController(text: "0"));
+      barcodeNoController.add(TextEditingController(text: "0"));
+      noOfTPController.add(TextEditingController(text: "0"));
+      weightController.add(TextEditingController(text: "0"));
+      remarkController.add(TextEditingController(text: "0"));
+      entry.add(MeterEntryModel(srNo: index + 1));
+    });
+  }
+
+  @override
+  void initState() {
+    pcs = BlocProvider.of<ChallanBloc>(context).selected.pcs ?? 0;
+    _generate(pcs);
+    _paginate(pgNo);
+    super.initState();
+  }
+
+  int pgNo = 1;
+  int perPageConst = 5;
+  List<MeterEntryModel> entry = [];
+  int initialIndex = 0;
+  int lastIndex = 4;
+  int lastPage = 1;
+
+  void _paginate(int pgNo) {
+    int lastpageLength = 5;
+    if (pcs % perPageConst != 0) {
+      lastpageLength = pcs % perPageConst;
+    }
+    if (pgNo == lastPage) {
+      lastIndex = pcs - 1; //14
+      initialIndex = perPageConst * (pgNo - 1);
+    } else {
+      lastIndex = ((pcs > perPageConst ? perPageConst : pcs * pgNo) - 1);
+      initialIndex =
+          (lastIndex > perPageConst ? lastIndex + 1 - perPageConst : 0);
+    }
+
+    print("lastIndex: $initialIndex");
+    setState(() {});
+  }
+
+  List<TextEditingController> takhaNoController = [];
+  List<TextEditingController> meterController = [];
+  List<TextEditingController> barcodeNoController = [];
+  List<TextEditingController> noOfTPController = [];
+  List<TextEditingController> weightController = [];
+  List<TextEditingController> remarkController = [];
   @override
   Widget build(BuildContext context) {
     bool _customTileExpanded = false;
     return Scaffold(
-      appBar: AppBar(title: Text("Meter Entry")),
+      appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            "Meter Entry",
+            style: TextStyle(color: Theme.of(context).primaryColor),
+          )),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ListView.builder(
-                itemCount: 5,
-                physics: BouncingScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: ExpansionTile(
-                      title: Text('ExpansionTile 3'),
-                      subtitle: Text('Leading expansion arrow icon'),
-                      controlAffinity: ListTileControlAffinity.leading,
-                      children: <Widget>[
-                        ListTile(title: Text('This is tile number 3')),
+            Column(
+                children: entry.sublist(initialIndex, lastIndex + 1).map((e) {
+              int index = entry.indexWhere((element) => element.srNo == e.srNo);
+              return Card(
+                borderOnForeground: true,
+                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                child: ExpansionTile(
+                  childrenPadding: EdgeInsets.symmetric(vertical: 0),
+                  tilePadding: EdgeInsets.all(1),
+                  collapsedTextColor: Theme.of(context).primaryColor,
+                  textColor: Theme.of(context).primaryColor,
+                  iconColor: Theme.of(context).primaryColor,
+                  title: Container(
+                    height: 30,
+                    //padding: EdgeInsets.only(right: 150),
+                    child: Row(
+                      children: [
+                        Text("Takha No:"),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Container(
+                          width: 112,
+                          child: TextField(
+                            cursorColor: Theme.of(context).primaryColor,
+                            controller: takhaNoController[index],
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "Enter Takha No."),
+                          ),
+                        ),
+                        //
                       ],
                     ),
-                  );
-                }),
+                  ),
+                  // subtitle:Text("Barcode"),
+                  // SizedBox(
+                  //   width: 3,
+                  // ),
+                  // Container(
+                  //   width: 71,
+                  //   child: TextField(
+                  //     cursorColor: Theme.of(context).primaryColor,
+                  //     controller: takhaNoController,
+                  //     decoration: InputDecoration(
+                  //         border: InputBorder.none, hintText: "No."),
+                  //   ),
+                  // ),
+                  controlAffinity: ListTileControlAffinity.leading,
+                  expandedCrossAxisAlignment: CrossAxisAlignment.start,
+
+                  children: <Widget>[
+                    Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Row(
+                            children: [
+                              Text("Meter:"),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                width: 110,
+                                child: TextField(
+                                  cursorColor: Theme.of(context).primaryColor,
+                                  controller: meterController[index],
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Enter Meter"),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 0,
+                              ),
+                              Text("Barcode No:"),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                width: 92,
+                                child: TextField(
+                                  cursorColor: Theme.of(context).primaryColor,
+                                  controller: barcodeNoController[index],
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Enter Barcode"),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Row(
+                            children: [
+                              Text("No. of PT:"),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                width: 112,
+                                child: TextField(
+                                  cursorColor: Theme.of(context).primaryColor,
+                                  controller: noOfTPController[index],
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Enter Number"),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text("Weight:"),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                width: 92,
+                                child: TextField(
+                                  cursorColor: Theme.of(context).primaryColor,
+                                  controller: weightController[index],
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Enter Weight"),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            height: 100,
+                            padding: EdgeInsets.symmetric(horizontal: 8),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.blueGrey),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10.0),
+                                  topRight: Radius.circular(10.0)),
+                            ),
+                            child: TextFormField(
+                              cursorColor: Theme.of(context).primaryColor,
+                              controller: remarkController[index],
+                              keyboardType: TextInputType.multiline,
+                              minLines:
+                                  1, //Normal textInputField will be displayed
+                              maxLines: 5,
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "   Remark"),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            }).toList()),
             SizedBox(
               height: 20,
             ),
@@ -46,7 +259,12 @@ class _MeterEntryState extends State<MeterEntry> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (pgNo != 1) {
+                            pgNo--;
+                            _paginate(pgNo);
+                          }
+                        },
                         style: ElevatedButton.styleFrom(
                             primary: Theme.of(context).primaryColor),
                         child: Container(
@@ -74,7 +292,7 @@ class _MeterEntryState extends State<MeterEntry> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 35),
                       child: Text(
-                        "2",
+                        pgNo.toString(),
                         style: TextStyle(
                             color: Colors.blueGrey,
                             fontSize: 33,
@@ -92,7 +310,12 @@ class _MeterEntryState extends State<MeterEntry> {
                       ),
                     ),
                     ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (pgNo != lastPage) {
+                            pgNo++;
+                            _paginate(pgNo);
+                          }
+                        },
                         style: ElevatedButton.styleFrom(
                             primary: Theme.of(context).primaryColor),
                         child: Container(

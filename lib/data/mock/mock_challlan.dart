@@ -8,7 +8,7 @@ class MockChallan {
       "party": "Ali Bubere",
       "item": "item name",
       "desgin": "Design",
-      "pcs": 50
+      "pcs": 3
     }),
     ChallanModel.fromMap({
       "id": 1,
@@ -16,7 +16,7 @@ class MockChallan {
       "party": "Ali Bubere",
       "item": "item name",
       "desgin": "Design",
-      "pcs": 50
+      "pcs": 7
     }),
     ChallanModel.fromMap({
       "id": 1,
@@ -24,7 +24,7 @@ class MockChallan {
       "party": "Ali Bubere",
       "item": "item name",
       "desgin": "Design",
-      "pcs": 50
+      "pcs": 14
     }),
   ];
 

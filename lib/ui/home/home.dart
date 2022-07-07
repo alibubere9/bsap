@@ -55,81 +55,76 @@ class Dashboard extends StatelessWidget {
                                     )),
                                   ),
                                   SizedBox(height: 10),
-                                  GridView.builder(
-                                      gridDelegate:
-                                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                                              maxCrossAxisExtent: 200,
-                                              childAspectRatio: 3 / 1.3,
-                                              crossAxisSpacing: 20,
-                                              mainAxisSpacing: 20),
-                                      itemCount: 5,
-                                      physics: BouncingScrollPhysics(),
-                                      shrinkWrap: true,
-                                      itemBuilder: (context, index) {
-                                        return GestureDetector(
-                                          onTap: (() {
+                                  GridView.count(
+                                    shrinkWrap: true,
+                                    physics: BouncingScrollPhysics(),
+                                    crossAxisCount: 2,
+                                    mainAxisSpacing: 20,
+                                    childAspectRatio: 3 / 1.3,
+                                    children: [
+                                      DashboardCard(
+                                          leading: Icon(
+                                              FontAwesomeIcons.shirtsinbulk,
+                                              size: 33,
+                                              color: ColorExtensions.fromHex(
+                                                  "#B22222")),
+                                          onTap: () {},
+                                          subtitleText: "Packing Slip",
+                                          titleText: 'Bale'),
+                                      DashboardCard(
+                                          leading: Icon(
+                                              FontAwesomeIcons.receipt,
+                                              size: 33,
+                                              color: ColorExtensions.fromHex(
+                                                  "#800080")),
+                                          onTap: () {
                                             NavRouter.navKey!.currentState!
                                                 .pushNamed(
-                                                    RouteStrings.MeterEntry);
-                                          }),
-                                          child: Card(
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              child: ListTile(
-                                                  minLeadingWidth: 12,
-                                                  leading: IconMap.copyColor(
-                                                    IconMap.iconById(state
-                                                        .entrySectionList![
-                                                            index]
-                                                        .iconId)!,
-                                                    size: 33,
-                                                    color: (state
-                                                                .entrySectionList![
-                                                                    index]
-                                                                .color !=
-                                                            null)
-                                                        ? ColorExtensions
-                                                            .fromHex(state
-                                                                .entrySectionList![
-                                                                    index]
-                                                                .color!)
-                                                        : Theme.of(context)
-                                                            .primaryColor,
-                                                  ),
-                                                  title: Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            right: 0.0),
-                                                    child: Text(
-                                                        state
-                                                            .entrySectionList![
-                                                                index]
-                                                            .name!,
-                                                        style: TextStyle(
-                                                            fontSize: 17,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w400)),
-                                                  ),
-                                                  subtitle: Text(
-                                                    state
-                                                        .entrySectionList![
-                                                            index]
-                                                        .subName!,
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        fontSize: 14),
-                                                  )),
-                                              decoration: BoxDecoration(
-                                                  //color: Colors.grey.withOpacity(0.1),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          15)),
-                                            ),
-                                          ),
-                                        );
-                                      })
+                                                    RouteStrings.ChallanList);
+                                          },
+                                          subtitleText: "Meter Entry",
+                                          titleText: 'Challan'),
+                                      DashboardCard(
+                                          leading: Icon(FontAwesomeIcons.ankh,
+                                              size: 33,
+                                              color: ColorExtensions.fromHex(
+                                                  "#FF0000")),
+                                          onTap: () {},
+                                          subtitleText: "Meter Entry",
+                                          titleText: 'Taka Actual'),
+                                      DashboardCard(
+                                          leading: Icon(
+                                              FontAwesomeIcons.boxOpen,
+                                              size: 33,
+                                              color: ColorExtensions.fromHex(
+                                                  "#C4A484")),
+                                          onTap: () {},
+                                          subtitleText: "Meter Entry",
+                                          titleText: 'Goods Return'),
+                                      DashboardCard(
+                                          leading: Icon(
+                                              FontAwesomeIcons.pencilRuler,
+                                              size: 33,
+                                              color: ColorExtensions.fromHex(
+                                                  "#B22222")),
+                                          onTap: () {},
+                                          subtitleText: "Gradation Entry",
+                                          titleText: 'Gradation')
+                                    ],
+                                  )
+                                  // GridView.builder(
+                                  //     gridDelegate:
+                                  //         const SliverGridDelegateWithMaxCrossAxisExtent(
+                                  //             maxCrossAxisExtent: 200,
+                                  //             childAspectRatio: 3 / 1.3,
+                                  //             crossAxisSpacing: 20,
+                                  //             mainAxisSpacing: 20),
+                                  //     itemCount: 5,
+                                  //     physics: BouncingScrollPhysics(),
+                                  //     shrinkWrap: true,
+                                  //     itemBuilder: (context, index) {
+                                  //       return DashboardCard();
+                                  //     })
                                 ],
                               ),
                             ),
@@ -138,6 +133,60 @@ class Dashboard extends StatelessWidget {
                   },
                 ));
       },
+    );
+  }
+}
+
+class DashboardCard extends StatelessWidget {
+  final Function()? onTap;
+  final Widget? leading;
+  final String? titleText;
+  final String? subtitleText;
+  const DashboardCard({
+    this.leading,
+    this.onTap,
+    this.subtitleText,
+    this.titleText,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      // (() {
+      //   NavRouter.navKey!.currentState!.pushNamed(RouteStrings.MeterEntry);
+      // }),
+      child: Card(
+        child: Container(
+          alignment: Alignment.center,
+          child: ListTile(
+              minLeadingWidth: 12,
+              leading: leading,
+              // IconMap.copyColor(
+              //   IconMap.iconById(state.entrySectionList![index].iconId)!,
+              //   size: 33,
+              //   color: (state.entrySectionList![index].color != null)
+              //       ?
+              //       : Theme.of(context).primaryColor,
+              // ),
+              title: Padding(
+                padding: const EdgeInsets.only(right: 0.0),
+                child: Text(titleText!,
+                    //state.entrySectionList![index].name!,
+                    style:
+                        TextStyle(fontSize: 17, fontWeight: FontWeight.w400)),
+              ),
+              subtitle: Text(
+                subtitleText!,
+                // state.entrySectionList![index].subName!,
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+              )),
+          decoration: BoxDecoration(
+              //color: Colors.grey.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(15)),
+        ),
+      ),
     );
   }
 }
