@@ -6,6 +6,7 @@ import 'package:classified_app/ui/faqs/faqs.dart';
 import 'package:classified_app/ui/home/home.dart';
 import 'package:classified_app/ui/login/login_page.dart';
 import 'package:classified_app/ui/meter_entry/meter_entry.dart';
+import 'package:classified_app/ui/meter_entry/submission_review.dart';
 import 'package:classified_app/ui/module_type/module_type.dart';
 import 'package:classified_app/ui/role_selection/role_selection.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +45,7 @@ class RouteStrings {
   static const CategoryList = '/categories';
   static const Login = '/login';
   static const ChallanList = '/challan_list';
+  static const SubmissionReview = '/submission_review';
   static const SubCategoryList = '/subCategories';
   static const ClassifiedProfile = '/classified_profile';
   static const ArticleProfile = '/article_profile';
@@ -86,6 +88,9 @@ class NavRouter {
         return _transition(child: Home(), type: PageTransitionType.fade);
       case (RouteStrings.MeterEntry):
         return _transition(child: MeterEntry(), type: PageTransitionType.fade);
+      case (RouteStrings.SubmissionReview):
+        return _transition(
+            child: SubmissionReview(), type: PageTransitionType.fade);
       case (RouteStrings.ChallanList):
         return _transition(child: ChallanList(), type: PageTransitionType.fade);
       case (RouteStrings.CompanyList):

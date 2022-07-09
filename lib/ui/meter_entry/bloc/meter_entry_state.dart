@@ -10,10 +10,9 @@ abstract class MeterEntryState extends Equatable {
 class MeterEntryInitial extends MeterEntryState {}
 
 class MeterEntryListState extends MeterEntryState {
-  final int? pageNumber;
   final List<MeterEntryModel>? meterEntryList;
 
-  MeterEntryListState(this.pageNumber, this.meterEntryList);
+  MeterEntryListState(this.meterEntryList);
   @override
-  List<Object?> get props => [pageNumber, meterEntryList];
+  List<Object?> get props => [meterEntryList];
 }

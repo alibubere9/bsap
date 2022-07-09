@@ -12,20 +12,14 @@ class MeterEntryBloc extends Bloc<MeterEntryEvent, MeterEntryState> {
   int? peices;
   MeterEntryBloc(this.meterEntryRepository) : super(MeterEntryInitial()) {
     on<MeterEntryEvent>((event, emit) {});
-    final List<MeterEntryModel> _meterEntryList =
-        List.generate(peices!, (int index) {
-      return MeterEntryModel();
-    });
 
-    on<GetToMeterEntryPage>((event, emit) {
-      int pageNo = event.pageNumber!;
-      List<MeterEntryModel> tempList = [];
-      peices = event.peices;
+    on<GetToSubmissionReviewPage>((event, emit) {
+      List<MeterEntryModel> meterEntryList = event.meterEntryList!;
 
       // for (var i = initialIndex; i < comp; i++) {
       //   tempList.add(_meterEntryList[i]);
       // }
-      emit(MeterEntryListState(pageNo, tempList));
+      emit(MeterEntryListState(meterEntryList));
     });
   }
 }
