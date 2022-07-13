@@ -313,10 +313,10 @@ class MeterEntryWidget extends StatelessWidget {
             trailing: Padding(
               padding: const EdgeInsets.only(right: 18.0),
               child: GestureDetector(
-                  onTap: () {
-                    final result = Navigator.push(
+                  onTap: () async {
+                    final result = await Navigator.push(
                       context,
-                      MaterialPageRoute<void>(
+                      MaterialPageRoute<String>(
                         builder: (BuildContext context) => ScanMeterEntry(),
                       ),
                     );

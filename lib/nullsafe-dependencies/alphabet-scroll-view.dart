@@ -113,7 +113,7 @@ class _AlphabetListScrollViewState extends State<AlphabetListScrollView> {
   @override
   void initState() {
     _initList();
-    WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
+    WidgetsBinding.instance!.addPostFrameCallback(_afterLayout);
     super.initState();
     _updateStrList();
     _initScrollCallback();

@@ -19,9 +19,13 @@ class ScanMeterEntry extends StatelessWidget {
 // custom scan area, if set to 1.0, will scan full area
           scanAreaScale: 1,
           scanLineColor: Colors.green.shade400,
-          onCapture: (data) {
-            Future<String?> result = Scan.parse(data);
-            NavRouter.navKey!.currentState!.pop(result);
+          onCapture: (data) async {
+            try {
+              print(data);
+              NavRouter.navKey!.currentState!.pop(data);
+            } catch (e) {
+              print(e);
+            }
           },
         ),
       ),
