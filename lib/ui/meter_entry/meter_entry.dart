@@ -5,11 +5,14 @@ import 'package:classified_app/global/widgets/button.dart';
 import 'package:classified_app/router.dart';
 import 'package:classified_app/ui/challan_list/bloc/challan_bloc.dart';
 import 'package:classified_app/ui/meter_entry/bloc/meter_entry_bloc.dart';
+import 'package:classified_app/ui/meter_entry/scan_meter_entry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:scan/scan.dart';
 
 class MeterEntry extends StatefulWidget {
   const MeterEntry({Key? key}) : super(key: key);
@@ -30,12 +33,12 @@ class _MeterEntryState extends State<MeterEntry> {
     print(lastPage);
 
     List.generate(pcs, (index) {
-      takhaNoController.add(TextEditingController(text: ""));
+      takhaNoController.add(TextEditingController(text: "0"));
       meterController.add(TextEditingController(text: "0"));
       barcodeNoController.add(TextEditingController(text: "0"));
       noOfTPController.add(TextEditingController(text: "0"));
       weightController.add(TextEditingController(text: "0"));
-      remarkController.add(TextEditingController(text: ""));
+      remarkController.add(TextEditingController(text: "0"));
       entry.add(MeterEntryModel(srNo: index + 1));
     });
   }
@@ -307,6 +310,20 @@ class MeterEntryWidget extends StatelessWidget {
             //         border: InputBorder.none, hintText: "No."),
             //   ),
             // ),
+            trailing: Padding(
+              padding: const EdgeInsets.only(right: 18.0),
+              child: GestureDetector(
+                  onTap: () {
+                    final result = Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => ScanMeterEntry(),
+                      ),
+                    );
+                    barcodeNoController[index].text = result.toString();
+                  },
+                  child: Icon(FontAwesomeIcons.qrcode)),
+            ),
             controlAffinity: ListTileControlAffinity.leading,
             expandedCrossAxisAlignment: CrossAxisAlignment.start,
 

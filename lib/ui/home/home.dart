@@ -1,3 +1,4 @@
+import 'package:classified_app/data/mock/mock_mtrEntrySection.dart';
 import 'package:classified_app/global/auth/bloc/authentication_bloc.dart';
 import 'package:classified_app/global/widgets/logo_widget.dart';
 import 'package:classified_app/router.dart';
@@ -7,7 +8,7 @@ import 'package:classified_app/const/padding.dart';
 import 'package:classified_app/global/widgets/spaces.dart';
 import 'package:classified_app/ui/drawer/app_drawer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:carousel_slider/carousel_slider.dart';
 import '../../const/icons.dart';
 import '../../utils/hex_color_extension.dart';
 import 'bloc/home_bloc.dart';
@@ -35,25 +36,13 @@ class Dashboard extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 // crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  SpaceHeightWithValue(height: 20),
+                                  SpaceHeightWithValue(height: 1),
                                   Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(20)),
-                                        color: Theme.of(context)
-                                            .primaryColor
-                                            .withOpacity(0.8)),
-                                    width: 400,
-                                    height: 170,
-                                    child: const Center(
-                                        child: Text(
-                                      "...Dashboard...",
-                                      style: TextStyle(
-                                          fontSize: 50,
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.white),
-                                    )),
-                                  ),
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              3.4,
+                                      width: 400,
+                                      child: CarouselWithIndicatorDemo()),
                                   SizedBox(height: 10),
                                   GridView.count(
                                     shrinkWrap: true,
@@ -205,3 +194,96 @@ AppBar _buildAppBar(BuildContext context) {
     ],
   );
 }
+
+class CarouselWithIndicatorDemo extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _CarouselWithIndicatorState();
+  }
+}
+
+class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
+  int _current = 0;
+  final CarouselController _controller = CarouselController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      //appBar: AppBar(title: Text('Carousel with indicator controller demo')),
+      body: Column(children: [
+        Expanded(
+          child: CarouselSlider(
+            items: imageSliders,
+            carouselController: _controller,
+            options: CarouselOptions(
+                autoPlay: true,
+                enlargeCenterPage: true,
+                aspectRatio: 2.0,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _current = index;
+                  });
+                }),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children:
+              MockEntrySection.entriesSection.asMap().entries.map((entry) {
+            return GestureDetector(
+              onTap: () => _controller.animateToPage(entry.key),
+              child: Container(
+                width: 9.0,
+                height: 9.0,
+                margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: (Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Theme.of(context).primaryColor)
+                        .withOpacity(_current == entry.key ? 0.9 : 0.4)),
+              ),
+            );
+          }).toList(),
+        ),
+      ]),
+    );
+  }
+}
+
+final List<Widget> imageSliders = MockEntrySection.entriesSection
+    .map((item) => Container(
+          //width: 500,
+          child: Container(
+            width: 500,
+            margin: EdgeInsets.all(1.0),
+            child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          color: Colors.blue.shade900),
+                      width: 400,
+                      height: 200,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Center(child: item.iconId),
+                          Center(
+                              child: Text(
+                            item.name!,
+                            style: TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white),
+                          )),
+                        ],
+                      ),
+                    ),
+                  ],
+                )),
+          ),
+        ))
+    .toList();

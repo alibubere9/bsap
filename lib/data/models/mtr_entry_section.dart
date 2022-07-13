@@ -1,10 +1,11 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 
 class EntrySectionModel extends Equatable {
   final int? id;
-  final int? iconId;
+  final Icon? iconId;
   final String? name;
   final String? color;
   final String? subName;
@@ -18,7 +19,7 @@ class EntrySectionModel extends Equatable {
 
   EntrySectionModel copyWith({
     int? id,
-    int? iconId,
+    Icon? iconId,
     String? name,
     String? color,
     String? subName,
