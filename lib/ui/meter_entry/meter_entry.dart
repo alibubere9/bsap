@@ -66,7 +66,6 @@ class _MeterEntryState extends State<MeterEntry> {
           (lastIndex > perPageConst ? lastIndex + 1 - perPageConst : 0);
     }
 
-    print("lastIndex: $initialIndex");
     setState(() {});
   }
 
