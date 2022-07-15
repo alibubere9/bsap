@@ -96,40 +96,9 @@ class _SubmissionReviewState extends State<SubmissionReview> {
                                                       width: 5,
                                                     ),
                                                     Container(
-                                                      width: (int.parse(state
-                                                                  .meterEntryList![
-                                                                      index]
-                                                                  .meter!) <
-                                                              10000)
-                                                          ? 20
-                                                          : (int.parse(state
-                                                                      .meterEntryList![
-                                                                          index]
-                                                                      .meter!) <
-                                                                  100000)
-                                                              ? 42
-                                                              : (int.parse(state
-                                                                          .meterEntryList![
-                                                                              index]
-                                                                          .barCode!) <
-                                                                      1000000)
-                                                                  ? 44
-                                                                  : 70,
+                                                      width: 42,
                                                       child: FittedBox(
-                                                        fit: (int.parse(state
-                                                                    .meterEntryList![
-                                                                        index]
-                                                                    .meter!) <
-                                                                10000)
-                                                            ? BoxFit.none
-                                                            : (int.parse(state
-                                                                        .meterEntryList![
-                                                                            index]
-                                                                        .meter!) <
-                                                                    100000)
-                                                                ? BoxFit.none
-                                                                : BoxFit
-                                                                    .fitWidth,
+                                                        fit: BoxFit.fitWidth,
                                                         child: Text(
                                                             state
                                                                 .meterEntryList![
@@ -158,34 +127,9 @@ class _SubmissionReviewState extends State<SubmissionReview> {
                                                       width: 5,
                                                     ),
                                                     Container(
-                                                      width: (int.parse(state
-                                                                  .meterEntryList![
-                                                                      index]
-                                                                  .barCode!) <
-                                                              10000)
-                                                          ? 20
-                                                          : (int.parse(state
-                                                                      .meterEntryList![
-                                                                          index]
-                                                                      .barCode!) <
-                                                                  100000)
-                                                              ? 42
-                                                              : 70,
+                                                      width: 42,
                                                       child: FittedBox(
-                                                        fit: (int.parse(state
-                                                                    .meterEntryList![
-                                                                        index]
-                                                                    .barCode!) <
-                                                                10000)
-                                                            ? BoxFit.none
-                                                            : (int.parse(state
-                                                                        .meterEntryList![
-                                                                            index]
-                                                                        .barCode!) <
-                                                                    100000)
-                                                                ? BoxFit.none
-                                                                : BoxFit
-                                                                    .fitWidth,
+                                                        fit: BoxFit.fitWidth,
                                                         child: Text(
                                                             state
                                                                 .meterEntryList![
@@ -224,34 +168,9 @@ class _SubmissionReviewState extends State<SubmissionReview> {
                                                       width: 5,
                                                     ),
                                                     Container(
-                                                      width: (int.parse(state
-                                                                  .meterEntryList![
-                                                                      index]
-                                                                  .numberOfTP!) <
-                                                              10000)
-                                                          ? 20
-                                                          : (int.parse(state
-                                                                      .meterEntryList![
-                                                                          index]
-                                                                      .weight!) <
-                                                                  100000)
-                                                              ? 42
-                                                              : 70,
+                                                      width: 42,
                                                       child: FittedBox(
-                                                        fit: (int.parse(state
-                                                                    .meterEntryList![
-                                                                        index]
-                                                                    .numberOfTP!) <
-                                                                10000)
-                                                            ? BoxFit.none
-                                                            : (int.parse(state
-                                                                        .meterEntryList![
-                                                                            index]
-                                                                        .weight!) <
-                                                                    100000)
-                                                                ? BoxFit.none
-                                                                : BoxFit
-                                                                    .fitWidth,
+                                                        fit: BoxFit.fitWidth,
                                                         child: Text(
                                                             state
                                                                 .meterEntryList![
@@ -280,34 +199,9 @@ class _SubmissionReviewState extends State<SubmissionReview> {
                                                       width: 5,
                                                     ),
                                                     Container(
-                                                      width: (int.parse(state
-                                                                  .meterEntryList![
-                                                                      index]
-                                                                  .weight!) <
-                                                              10000)
-                                                          ? 20
-                                                          : (int.parse(state
-                                                                      .meterEntryList![
-                                                                          index]
-                                                                      .weight!) <
-                                                                  100000)
-                                                              ? 42
-                                                              : 82,
+                                                      width: 42,
                                                       child: FittedBox(
-                                                        fit: (int.parse(state
-                                                                    .meterEntryList![
-                                                                        index]
-                                                                    .numberOfTP!) <
-                                                                10000)
-                                                            ? BoxFit.none
-                                                            : (int.parse(state
-                                                                        .meterEntryList![
-                                                                            index]
-                                                                        .weight!) <
-                                                                    100000)
-                                                                ? BoxFit.none
-                                                                : BoxFit
-                                                                    .fitWidth,
+                                                        fit: BoxFit.none,
                                                         child: Text(
                                                             state
                                                                 .meterEntryList![

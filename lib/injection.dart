@@ -150,7 +150,7 @@ void _initBloc() {
   sl.registerFactory(() => CompanySelectionBloc(sl()));
   sl.registerFactory(() => RoleSelectionBloc(sl()));
   sl.registerFactory(() => ModuleSelectionBloc(sl()));
-  sl.registerFactory(() => MeterEntryBloc(sl()));
+  sl.registerFactory(() => MeterEntryBloc(sl(),sl()));
   sl.registerFactory(() => LoginBloc(sl()));
 
   sl.registerFactory(() => ClassifiedProfileBloc(sl(), sl()));

@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 
 class MeterEntryModel extends Equatable {
   int? srNo;
-  int? takhaNo;
+  String? takhaNo;
   String? barCode;
   String? meter;
   String? weight;
@@ -22,7 +22,7 @@ class MeterEntryModel extends Equatable {
 
   MeterEntryModel copyWith({
     int? srNo,
-    int? takhaNo,
+    String? takhaNo,
     String? barCode,
     String? meter,
     String? weight,

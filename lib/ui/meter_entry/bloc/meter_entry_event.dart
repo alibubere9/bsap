@@ -26,3 +26,16 @@ class NextPageEvent extends MeterEntryEvent {
 
   NextPageEvent({this.pageNumber, this.meterEntryList});
 }
+
+class SendBarcodeNumberEvent extends MeterEntryEvent {
+  final int? index;
+  final String? barcodeNumber;
+
+  SendBarcodeNumberEvent({this.index, this.barcodeNumber});
+}
+
+class BarcodeAlreadyScannedEvent extends MeterEntryEvent {
+  final String? snackBarMessage;
+
+  BarcodeAlreadyScannedEvent({this.snackBarMessage});
+}

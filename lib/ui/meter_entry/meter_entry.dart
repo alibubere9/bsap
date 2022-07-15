@@ -179,8 +179,7 @@ class _MeterEntryState extends State<MeterEntry> {
                             _paginate(pgNo);
                           } else {
                             for (int i = 0; i < entry.length; i++) {
-                              entry[i].takhaNo =
-                                  int.parse(takhaNoController[i].text);
+                              entry[i].takhaNo = takhaNoController[i].text;
                               entry[i].weight = weightController[i].text;
                               entry[i].meter = meterController[i].text;
                               entry[i].barCode = barcodeNoController[i].text;
@@ -262,177 +261,191 @@ class MeterEntryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      borderOnForeground: true,
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-      child: Stack(
-        children: [
-          //Text(e.srNo.toString()),
-          ExpansionTile(
-            childrenPadding: EdgeInsets.symmetric(vertical: 0),
-            tilePadding: EdgeInsets.all(1),
-            collapsedTextColor: Theme.of(context).primaryColor,
-            textColor: Theme.of(context).primaryColor,
-            iconColor: Theme.of(context).primaryColor,
-            title: Container(
-              height: 30,
-              //padding: EdgeInsets.only(right: 150),
-              child: Row(
-                children: [
-                  Text("Takha No:"),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Container(
-                    width: 112,
-                    child: TextField(
-                      cursorColor: Theme.of(context).primaryColor,
-                      controller: takhaNoController[index],
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Enter Takha No."),
+    return BlocListener<MeterEntryBloc, MeterEntryState>(
+      listener: (context, state) {
+        if (state is MeterEntryByBarcodeState) {
+          barcodeNoController[state.index!].text = state.meterEntry!.barCode!;
+          takhaNoController[state.index!].text = state.meterEntry!.takhaNo!;
+          meterController[state.index!].text = state.meterEntry!.meter!;
+          noOfTPController[state.index!].text = state.meterEntry!.numberOfTP!;
+          remarkController[state.index!].text = state.meterEntry!.remark!;
+          weightController[state.index!].text = state.meterEntry!.weight!;
+        }
+      },
+      child: Card(
+        borderOnForeground: true,
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        child: Stack(
+          children: [
+            //Text(e.srNo.toString()),
+            ExpansionTile(
+              childrenPadding: EdgeInsets.symmetric(vertical: 0),
+              tilePadding: EdgeInsets.all(1),
+              collapsedTextColor: Theme.of(context).primaryColor,
+              textColor: Theme.of(context).primaryColor,
+              iconColor: Theme.of(context).primaryColor,
+              title: Container(
+                height: 30,
+                //padding: EdgeInsets.only(right: 150),
+                child: Row(
+                  children: [
+                    Text("Takha No:"),
+                    SizedBox(
+                      width: 5,
                     ),
-                  ),
-                  //
-                ],
-              ),
-            ),
-            // subtitle:Text("Barcode"),
-            // SizedBox(
-            //   width: 3,
-            // ),
-            // Container(
-            //   width: 71,
-            //   child: TextField(
-            //     cursorColor: Theme.of(context).primaryColor,
-            //     controller: takhaNoController,
-            //     decoration: InputDecoration(
-            //         border: InputBorder.none, hintText: "No."),
-            //   ),
-            // ),
-            trailing: Padding(
-              padding: const EdgeInsets.only(right: 18.0),
-              child: GestureDetector(
-                  onTap: () async {
-                    final result = await Navigator.push(
-                      context,
-                      MaterialPageRoute<String>(
-                        builder: (BuildContext context) => ScanMeterEntry(),
-                      ),
-                    );
-                    barcodeNoController[index].text = result.toString();
-                  },
-                  child: Icon(FontAwesomeIcons.qrcode)),
-            ),
-            controlAffinity: ListTileControlAffinity.leading,
-            expandedCrossAxisAlignment: CrossAxisAlignment.start,
-
-            children: <Widget>[
-              Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        Text("Meter:"),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          width: 110,
-                          child: TextField(
-                            cursorColor: Theme.of(context).primaryColor,
-                            controller: meterController[index],
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Enter Meter"),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 0,
-                        ),
-                        Text("Barcode No:"),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          width: 92,
-                          child: TextField(
-                            cursorColor: Theme.of(context).primaryColor,
-                            controller: barcodeNoController[index],
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Enter Barcode"),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        Text("No. of PT:"),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          width: 112,
-                          child: TextField(
-                            cursorColor: Theme.of(context).primaryColor,
-                            controller: noOfTPController[index],
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Enter Number"),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text("Weight:"),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          width: 92,
-                          child: TextField(
-                            cursorColor: Theme.of(context).primaryColor,
-                            controller: weightController[index],
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Enter Weight"),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 100,
-                      padding: EdgeInsets.symmetric(horizontal: 8),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blueGrey),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10.0),
-                            topRight: Radius.circular(10.0)),
-                      ),
-                      child: TextFormField(
+                    Container(
+                      width: 112,
+                      child: TextField(
                         cursorColor: Theme.of(context).primaryColor,
-                        controller: remarkController[index],
-                        keyboardType: TextInputType.multiline,
-                        minLines: 1, //Normal textInputField will be displayed
-                        maxLines: 5,
+                        controller: takhaNoController[index],
                         decoration: InputDecoration(
-                            border: InputBorder.none, hintText: "   Remark"),
+                            border: InputBorder.none,
+                            hintText: "Enter Takha No."),
                       ),
                     ),
-                  )
-                ],
+                    //
+                  ],
+                ),
               ),
-            ],
-          ),
-        ],
+              // subtitle:Text("Barcode"),
+              // SizedBox(
+              //   width: 3,
+              // ),
+              // Container(
+              //   width: 71,
+              //   child: TextField(
+              //     cursorColor: Theme.of(context).primaryColor,
+              //     controller: takhaNoController,
+              //     decoration: InputDecoration(
+              //         border: InputBorder.none, hintText: "No."),
+              //   ),
+              // ),
+              trailing: Padding(
+                padding: const EdgeInsets.only(right: 18.0),
+                child: GestureDetector(
+                    onTap: () async {
+                      final result = await Navigator.push(
+                        context,
+                        MaterialPageRoute<String>(
+                          builder: (BuildContext context) => ScanMeterEntry(
+                              index: index,
+                              barcodeControllerList: barcodeNoController),
+                        ),
+                      );
+                      barcodeNoController[index].text = result.toString();
+                    },
+                    child: Icon(FontAwesomeIcons.qrcode)),
+              ),
+              controlAffinity: ListTileControlAffinity.leading,
+              expandedCrossAxisAlignment: CrossAxisAlignment.start,
+
+              children: <Widget>[
+                Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          Text("Meter:"),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Container(
+                            width: 110,
+                            child: TextField(
+                              cursorColor: Theme.of(context).primaryColor,
+                              controller: meterController[index],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Enter Meter"),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 0,
+                          ),
+                          Text("Barcode No:"),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Container(
+                            width: 92,
+                            child: TextField(
+                              cursorColor: Theme.of(context).primaryColor,
+                              controller: barcodeNoController[index],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Enter Barcode"),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          Text("No. of PT:"),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Container(
+                            width: 112,
+                            child: TextField(
+                              cursorColor: Theme.of(context).primaryColor,
+                              controller: noOfTPController[index],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Enter Number"),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text("Weight:"),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Container(
+                            width: 92,
+                            child: TextField(
+                              cursorColor: Theme.of(context).primaryColor,
+                              controller: weightController[index],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Enter Weight"),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 100,
+                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blueGrey),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10.0),
+                              topRight: Radius.circular(10.0)),
+                        ),
+                        child: TextFormField(
+                          cursorColor: Theme.of(context).primaryColor,
+                          controller: remarkController[index],
+                          keyboardType: TextInputType.multiline,
+                          minLines: 1, //Normal textInputField will be displayed
+                          maxLines: 5,
+                          decoration: InputDecoration(
+                              border: InputBorder.none, hintText: "   Remark"),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
