@@ -1,5 +1,3 @@
-import 'package:classified_app/data/models/mtr_entry_section.dart';
-
 import '../models/meter_entry_model.dart';
 
 class MockMeterEntry {

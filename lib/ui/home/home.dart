@@ -2,6 +2,7 @@ import 'package:classified_app/data/mock/mock_mtrEntrySection.dart';
 import 'package:classified_app/global/auth/bloc/authentication_bloc.dart';
 import 'package:classified_app/global/widgets/logo_widget.dart';
 import 'package:classified_app/router.dart';
+import 'package:classified_app/ui/challan_list/bloc/challan_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:classified_app/const/padding.dart';
@@ -11,6 +12,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../../const/icons.dart';
 import '../../utils/hex_color_extension.dart';
+import '../bale_list/bloc/bales_list_bloc.dart';
 import 'bloc/home_bloc.dart';
 
 class Dashboard extends StatelessWidget {
@@ -57,7 +59,14 @@ class Dashboard extends StatelessWidget {
                                               size: 33,
                                               color: ColorExtensions.fromHex(
                                                   "#B22222")),
-                                          onTap: () {},
+                                          onTap: () {
+                                            BlocProvider.of<BalesListBloc>(
+                                                    context)
+                                                .add(LoadBalesList());
+                                            NavRouter.navKey!.currentState!
+                                                .pushNamed(
+                                                    RouteStrings.BaleList);
+                                          },
                                           subtitleText: "Packing Slip",
                                           titleText: 'Bale'),
                                       DashboardCard(
@@ -67,6 +76,9 @@ class Dashboard extends StatelessWidget {
                                               color: ColorExtensions.fromHex(
                                                   "#800080")),
                                           onTap: () {
+                                            BlocProvider.of<ChallanBloc>(
+                                                    context)
+                                                .add(LoadChallan());
                                             NavRouter.navKey!.currentState!
                                                 .pushNamed(
                                                     RouteStrings.ChallanList);

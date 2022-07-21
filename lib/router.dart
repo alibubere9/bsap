@@ -1,12 +1,13 @@
 import 'package:classified_app/data/repositories/company_selection_repo.dart';
 import 'package:classified_app/ui/article_view/article_view.dart';
+import 'package:classified_app/ui/bale_list/bale_list.dart';
 import 'package:classified_app/ui/challan_list/challan_list.dart';
+import 'package:classified_app/ui/challan_meter_entry/challan_meter_entry.dart';
+import 'package:classified_app/ui/challan_meter_entry/submission_review.dart';
 import 'package:classified_app/ui/company_selection/company_selection.dart';
 import 'package:classified_app/ui/faqs/faqs.dart';
 import 'package:classified_app/ui/home/home.dart';
 import 'package:classified_app/ui/login/login_page.dart';
-import 'package:classified_app/ui/meter_entry/meter_entry.dart';
-import 'package:classified_app/ui/meter_entry/submission_review.dart';
 import 'package:classified_app/ui/module_type/module_type.dart';
 import 'package:classified_app/ui/role_selection/role_selection.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +17,7 @@ import 'package:classified_app/home_page.dart';
 import 'package:classified_app/ui/about_us/about_us.dart';
 import 'package:classified_app/ui/banner-ad/banner_ad.dart';
 import 'package:classified_app/ui/categories_list/category_list.dart';
-import 'package:classified_app/ui/classifield_list/classifield_list.dart';
 import 'package:classified_app/ui/classifield_profile/classified_profile.dart';
-import 'package:classified_app/ui/article_list/articles_list.dart';
 import 'package:classified_app/ui/article_profile/article_profile.dart';
 import 'package:classified_app/ui/copyright/copyright.dart';
 import 'package:classified_app/ui/feedback.dart';
@@ -33,7 +32,8 @@ import 'package:classified_app/ui/tnc/tnc.dart';
 import 'package:classified_app/ui/user_profile/profile.dart';
 
 import 'data/models/banner.dart';
-import 'ui/register_user/register_user_page.dart';
+import 'ui/bale_meter_entry/bale_meter_entry.dart';
+import 'ui/bale_meter_entry/submission_review.dart';
 
 class RouteStrings {
   static const Home = '/';
@@ -42,10 +42,13 @@ class RouteStrings {
   static const RoleSelectionList = '/roles';
   static const ModuleSelectionList = '/modules';
   static const MeterEntry = '/meter_entry';
+  static const BaleMeterEntry = '/bale_meter_entry';
   static const CategoryList = '/categories';
   static const Login = '/login';
   static const ChallanList = '/challan_list';
+  static const BaleList = '/bale_list';
   static const SubmissionReview = '/submission_review';
+  static const BaleSubmissionReview = '/bale_submission_review';
   static const SubCategoryList = '/subCategories';
   static const ClassifiedProfile = '/classified_profile';
   static const ArticleProfile = '/article_profile';
@@ -91,8 +94,16 @@ class NavRouter {
       case (RouteStrings.SubmissionReview):
         return _transition(
             child: SubmissionReview(), type: PageTransitionType.fade);
+      case (RouteStrings.BaleMeterEntry):
+        return _transition(
+            child: BaleMeterEntry(), type: PageTransitionType.fade);
+      case (RouteStrings.BaleSubmissionReview):
+        return _transition(
+            child: BaleSubmissionReview(), type: PageTransitionType.fade);
       case (RouteStrings.ChallanList):
         return _transition(child: ChallanList(), type: PageTransitionType.fade);
+      case (RouteStrings.BaleList):
+        return _transition(child: BaleList(), type: PageTransitionType.fade);
       case (RouteStrings.CompanyList):
         return _transition(
             child: CompanySelection(), type: PageTransitionType.fade);

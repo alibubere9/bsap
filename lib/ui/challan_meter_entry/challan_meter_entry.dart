@@ -1,19 +1,13 @@
 import 'dart:developer';
 
 import 'package:classified_app/data/models/meter_entry_model.dart';
-import 'package:classified_app/global/widgets/button.dart';
 import 'package:classified_app/router.dart';
 import 'package:classified_app/ui/challan_list/bloc/challan_bloc.dart';
-import 'package:classified_app/ui/meter_entry/bloc/meter_entry_bloc.dart';
-import 'package:classified_app/ui/meter_entry/scan_meter_entry.dart';
+import 'package:classified_app/ui/challan_meter_entry/bloc/meter_entry_bloc.dart';
+import 'package:classified_app/ui/challan_meter_entry/scan_challan_meter_entry.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:scan/scan.dart';
-
 class MeterEntry extends StatefulWidget {
   const MeterEntry({Key? key}) : super(key: key);
 
@@ -33,12 +27,12 @@ class _MeterEntryState extends State<MeterEntry> {
     print(lastPage);
 
     List.generate(pcs, (index) {
-      takhaNoController.add(TextEditingController(text: "0"));
-      meterController.add(TextEditingController(text: "0"));
-      barcodeNoController.add(TextEditingController(text: "0"));
-      noOfTPController.add(TextEditingController(text: "0"));
-      weightController.add(TextEditingController(text: "0"));
-      remarkController.add(TextEditingController(text: "0"));
+      takhaNoController.add(TextEditingController(text: ""));
+      meterController.add(TextEditingController(text: ""));
+      barcodeNoController.add(TextEditingController(text: ""));
+      noOfTPController.add(TextEditingController(text: ""));
+      weightController.add(TextEditingController(text: ""));
+      remarkController.add(TextEditingController(text: ""));
       entry.add(MeterEntryModel(srNo: index + 1));
     });
   }
@@ -288,38 +282,40 @@ class MeterEntryWidget extends StatelessWidget {
                 height: 30,
                 //padding: EdgeInsets.only(right: 150),
                 child: Row(
+                  //mainAxisAlignment: MainAxisAlignment.start,
+                  //crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Takha No:"),
+                    Text(
+                      "Takha No:",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500, fontSize: 14.5),
+                    ),
                     SizedBox(
                       width: 5,
                     ),
                     Container(
                       width: 112,
                       child: TextField(
+                        textInputAction: TextInputAction.next,
                         cursorColor: Theme.of(context).primaryColor,
                         controller: takhaNoController[index],
+                        onTap: () {
+                          takhaNoController[index].text = "0";
+                        },
+                        textAlign: TextAlign.center,
                         decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Enter Takha No."),
+                            contentPadding: EdgeInsets.all(0),
+                            border: OutlineInputBorder(),
+                            filled: true,
+                            hintText: "Enter Takha No.",
+                            hintStyle: TextStyle(
+                                fontWeight: FontWeight.w500, fontSize: 14.5)),
                       ),
                     ),
                     //
                   ],
                 ),
               ),
-              // subtitle:Text("Barcode"),
-              // SizedBox(
-              //   width: 3,
-              // ),
-              // Container(
-              //   width: 71,
-              //   child: TextField(
-              //     cursorColor: Theme.of(context).primaryColor,
-              //     controller: takhaNoController,
-              //     decoration: InputDecoration(
-              //         border: InputBorder.none, hintText: "No."),
-              //   ),
-              // ),
               trailing: Padding(
                 padding: const EdgeInsets.only(right: 18.0),
                 child: GestureDetector(
@@ -334,85 +330,147 @@ class MeterEntryWidget extends StatelessWidget {
                       );
                       barcodeNoController[index].text = result.toString();
                     },
-                    child: Icon(FontAwesomeIcons.qrcode)),
+                    child: Icon(Icons.qr_code_scanner_sharp)),
               ),
               controlAffinity: ListTileControlAffinity.leading,
               expandedCrossAxisAlignment: CrossAxisAlignment.start,
-
               children: <Widget>[
                 Column(
                   children: [
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        children: [
-                          Text("Meter:"),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Container(
-                            width: 110,
-                            child: TextField(
-                              cursorColor: Theme.of(context).primaryColor,
-                              controller: meterController[index],
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Enter Meter"),
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Meter:",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 14.5),
                             ),
-                          ),
-                          SizedBox(
-                            width: 0,
-                          ),
-                          Text("Barcode No:"),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Container(
-                            width: 92,
-                            child: TextField(
-                              cursorColor: Theme.of(context).primaryColor,
-                              controller: barcodeNoController[index],
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Enter Barcode"),
+                            SizedBox(
+                              width: 5,
                             ),
-                          ),
-                        ],
+                            Container(
+                              height: 30,
+                              width: 75,
+                              child: TextField(
+                                textInputAction: TextInputAction.next,
+                                cursorColor: Theme.of(context).primaryColor,
+                                controller: meterController[index],
+                                onTap: () {
+                                  meterController[index].text = "0";
+                                },
+                                textAlign: TextAlign.center,
+                                decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(0),
+                                    border: OutlineInputBorder(),
+                                    filled: true,
+                                    hintText: "Enter Meter",
+                                    hintStyle: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14.5)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 7,
+                            ),
+                            Text(
+                              "Barcode No:",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 14.5),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Container(
+                              height: 30,
+                              width: 120,
+                              child: TextField(
+                                textInputAction: TextInputAction.next,
+                                cursorColor: Theme.of(context).primaryColor,
+                                controller: barcodeNoController[index],
+                                onTap: () {
+                                  barcodeNoController[index].text = "0";
+                                },
+                                textAlign: TextAlign.center,
+                                decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(0),
+                                    border: OutlineInputBorder(),
+                                    filled: true,
+                                    hintText: "Enter Barcode No.",
+                                    hintStyle: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14.5)),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         children: [
-                          Text("No. of PT:"),
+                          Text(
+                            "No. of TP:",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500, fontSize: 14.5),
+                          ),
                           SizedBox(
                             width: 5,
                           ),
                           Container(
-                            width: 112,
+                            height: 30,
+                            width: 111,
                             child: TextField(
+                              textInputAction: TextInputAction.next,
                               cursorColor: Theme.of(context).primaryColor,
                               controller: noOfTPController[index],
+                              onTap: () {
+                                noOfTPController[index].text = "0";
+                              },
+                              textAlign: TextAlign.center,
                               decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Enter Number"),
+                                  contentPadding: EdgeInsets.all(0),
+                                  border: OutlineInputBorder(),
+                                  filled: true,
+                                  hintText: "Enter No.",
+                                  hintStyle: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14.5)),
                             ),
                           ),
                           SizedBox(
                             width: 5,
                           ),
-                          Text("Weight:"),
+                          Text(
+                            "Weight:",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500, fontSize: 14.5),
+                          ),
                           SizedBox(
                             width: 5,
                           ),
                           Container(
+                            height: 30,
                             width: 92,
                             child: TextField(
+                              textInputAction: TextInputAction.next,
                               cursorColor: Theme.of(context).primaryColor,
                               controller: weightController[index],
+                              onTap: () {
+                                weightController[index].text = "0";
+                              },
+                              textAlign: TextAlign.center,
                               decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Enter Weight"),
+                                  contentPadding: EdgeInsets.all(0),
+                                  border: OutlineInputBorder(),
+                                  filled: true,
+                                  hintText: "Enter Weight",
+                                  hintStyle: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14.5)),
                             ),
                           ),
                         ],
@@ -430,13 +488,22 @@ class MeterEntryWidget extends StatelessWidget {
                               topRight: Radius.circular(10.0)),
                         ),
                         child: TextFormField(
+                          textInputAction: TextInputAction.next,
                           cursorColor: Theme.of(context).primaryColor,
                           controller: remarkController[index],
+                          onTap: () {
+                            remarkController[index].text =
+                                "The remark for this is.";
+                          },
                           keyboardType: TextInputType.multiline,
                           minLines: 1, //Normal textInputField will be displayed
                           maxLines: 5,
                           decoration: InputDecoration(
-                              border: InputBorder.none, hintText: "   Remark"),
+                            border: InputBorder.none,
+                            hintText: "  Write Remark",
+                            hintStyle: TextStyle(
+                                fontWeight: FontWeight.w500, fontSize: 19),
+                          ),
                         ),
                       ),
                     )
