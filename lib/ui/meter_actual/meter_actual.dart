@@ -32,44 +32,47 @@ class _MeterActualWidgetState extends State<MeterActualWidget> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Row(
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.5,
-                      child: Card(
-                          child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15)),
-                        child: DropdownButton<Jobber>(
-                          hint: Text("Select Jobber"),
-                          items: _jobbers
-                              .map((e) => DropdownMenuItem(
-                                  value: e, child: Text(e.name ?? "")))
-                              .toList(),
-                          value: _selected,
-                          onChanged: (v) {
-                            setState(() {
-                              _selected = v!;
-                            });
-                          },
+                Card(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.5,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15)),
+                          child: DropdownButton<Jobber>(
+                            hint: Text("Select Jobber"),
+                            items: _jobbers
+                                .map((e) => DropdownMenuItem(
+                                    value: e, child: Text(e.name ?? "")))
+                                .toList(),
+                            value: _selected,
+                            onChanged: (v) {
+                              setState(() {
+                                _selected = v!;
+                              });
+                            },
+                          ),
                         ),
-                      )),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.5,
-                      child: InkWell(
-                          onTap: () async {
-                            date = await showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate: DateTime(1990),
-                                    lastDate: DateTime.now()) ??
-                                DateTime.now();
-                            setState(() {});
-                          },
-                          child: Container(child: Text(date.toString()))),
-                    )
-                  ],
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.5,
+                        child: InkWell(
+                            onTap: () async {
+                              date = await showDatePicker(
+                                      context: context,
+                                      initialDate: DateTime.now(),
+                                      firstDate: DateTime(1990),
+                                      lastDate: DateTime.now()) ??
+                                  DateTime.now();
+                              setState(() {});
+                            },
+                            child: Container(
+                                child: Text(date.toString().substring(0, 11)))),
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),
