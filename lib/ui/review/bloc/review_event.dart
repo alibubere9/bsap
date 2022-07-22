@@ -7,10 +7,10 @@ abstract class ReviewEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class SendReviewEvent extends ReviewEvent{
+class SendReviewEvent extends ReviewEvent {
   final ReviewModel? reviewModel;
 
   SendReviewEvent(this.reviewModel);
-   @override
+  @override
   List<Object> get props => [reviewModel!];
 }

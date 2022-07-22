@@ -15,10 +15,12 @@ class ProfilePic extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         color: Colors.black,
-        child: Image.network(UrlConcat.concatUrl(
-          imageUrl ?? ImagePaths.noImageUrl),
-          loadingBuilder: (context, child, loadingProgress) => 
-                           (loadingProgress == null) ? child : ImageLoading(width: 150, height: 150),
+        child: Image.network(
+          UrlConcat.concatUrl(imageUrl ?? ImagePaths.noImageUrl),
+          loadingBuilder: (context, child, loadingProgress) =>
+              (loadingProgress == null)
+                  ? child
+                  : ImageLoading(width: 150, height: 150),
           fit: BoxFit.contain,
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,

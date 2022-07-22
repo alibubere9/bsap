@@ -6,5 +6,3 @@ abstract class RoleSelectionEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-
-

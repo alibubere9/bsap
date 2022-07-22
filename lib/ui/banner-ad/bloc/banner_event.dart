@@ -6,6 +6,7 @@ abstract class BannerEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
 class LoadBanner extends BannerEvent {}
 
 class LikeBannerAd extends BannerEvent {

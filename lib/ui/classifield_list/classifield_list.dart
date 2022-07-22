@@ -27,13 +27,10 @@ class ClassifiedListScreen extends StatelessWidget {
               BlocBuilder<ClassifiedListBloc, ClassifiedListState>(
                 builder: (context, state) {
                   if (state is ClassifiedListLoaded) {
-                    return SearchField(
-                      text: state.text!
-                    );
+                    return SearchField(text: state.text!);
                   } else if (state is ClassifiedListEmpty ||
                       state is ClassifiedListLoading) {
                     return buildSearchFieldEmpty();
-                    
                   } else {
                     return buildSearchFieldEmpty();
                   }
@@ -53,12 +50,10 @@ class ClassifiedListScreen extends StatelessWidget {
                       ),
                     );
                   } else if (state is ClassifiedListLoading) {
-                    return  Container(
-                      height: height * 0.8,
-                      child: BaseShimmmer());
+                    return Container(
+                        height: height * 0.8, child: BaseShimmmer());
                   } else {
-                    return Center(
-                        child: Text(ConstantStrings.noStoresFound));
+                    return Center(child: Text(ConstantStrings.noStoresFound));
                   }
                 },
               )
@@ -72,7 +67,7 @@ class ClassifiedListScreen extends StatelessWidget {
 
   SearchField buildSearchFieldEmpty() {
     return SearchField(
-       text: '',
+      text: '',
     );
   }
 

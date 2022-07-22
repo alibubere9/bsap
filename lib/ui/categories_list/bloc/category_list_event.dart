@@ -9,5 +9,4 @@ abstract class CategoryListEvent extends Equatable {
 
 class LoadCategories extends CategoryListEvent {}
 
-class BhiwandiSpecified extends CategoryListEvent {
-}
+class BhiwandiSpecified extends CategoryListEvent {}

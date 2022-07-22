@@ -15,6 +15,6 @@ class FaqsLoaded extends FaqsState {
   final List<FaqsModel>? faqsList;
 
   FaqsLoaded({this.faqsList});
-   @override
+  @override
   List<Object> get props => [faqsList!];
 }

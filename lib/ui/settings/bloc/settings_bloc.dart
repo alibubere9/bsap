@@ -29,9 +29,9 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       yield SettingsLoaded(appVersion, environment);
     } else if (event is SwitchEnvironment) {
       yield SettingsLoading();
-      print(environment); 
+      print(environment);
       _environmentManager.switchEnvironment();
-      print(environment); 
+      print(environment);
       yield SettingsLoaded(appVersion, environment);
     }
   }

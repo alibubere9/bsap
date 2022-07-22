@@ -9,7 +9,6 @@ abstract class UserEvent extends Equatable {
 
 class CheckUserEvent extends UserEvent {}
 
-
 class UpdateUserEvent extends UserEvent {
   final UserModel user;
 
@@ -26,4 +25,3 @@ class UpdateUserImage extends UserEvent {
   @override
   List<Object> get props => [file];
 }
-

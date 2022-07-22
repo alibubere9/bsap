@@ -19,7 +19,8 @@ class ThirdPartyNotices extends StatelessWidget {
           child: Column(children: [
         Expanded(
             child: WebViewWidget(
-          url: SystemSettingManager.getSetting(SystemSettingsTypes.thirdPartyNotices),
+          url: SystemSettingManager.getSetting(
+              SystemSettingsTypes.thirdPartyNotices),
         )),
       ])),
     );

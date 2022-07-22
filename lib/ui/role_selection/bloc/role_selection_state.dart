@@ -8,5 +8,3 @@ abstract class RoleSelectionState extends Equatable {
 }
 
 class RoleSelectionInitial extends RoleSelectionState {}
-
-

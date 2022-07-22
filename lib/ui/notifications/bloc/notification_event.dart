@@ -7,8 +7,7 @@ abstract class NotificationEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GettingListEvent extends NotificationEvent {
-}
+class GettingListEvent extends NotificationEvent {}
 
 class NotificationViewedEvent extends NotificationEvent {
   final int? notificationId;
@@ -18,5 +17,5 @@ class NotificationViewedEvent extends NotificationEvent {
     required this.isViewed,
   });
   @override
-  List<Object> get props => [notificationId!,isViewed];
+  List<Object> get props => [notificationId!, isViewed];
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/notification_bloc.dart';
+
 class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -92,14 +93,14 @@ class NotificationScreen extends StatelessWidget {
                       tilePadding: ConstPadding.all8,
                     );
                   })
-                  : BaseShimmmer()
-              // : Loading(
-              //     child: Center(
-              //         child: Text(
-              //       'No notifications found',
-              //       style: TextStyle(fontSize: 25),
-              //     )),)
-                );
+              : BaseShimmmer()
+          // : Loading(
+          //     child: Center(
+          //         child: Text(
+          //       'No notifications found',
+          //       style: TextStyle(fontSize: 25),
+          //     )),)
+          );
     });
   }
 }

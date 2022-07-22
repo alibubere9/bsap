@@ -19,5 +19,5 @@ class SettingsLoaded extends SettingsState {
   );
 
   @override
-  List<Object> get props => [appVersion,environment];
+  List<Object> get props => [appVersion, environment];
 }

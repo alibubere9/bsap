@@ -8,5 +8,3 @@ abstract class ModuleSelectionState extends Equatable {
 }
 
 class ModuleSelectionInitial extends ModuleSelectionState {}
-
-

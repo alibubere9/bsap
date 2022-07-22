@@ -34,7 +34,8 @@ class NetworkResponse {
 
   String toJson() => json.encode(toMap());
 
-  factory NetworkResponse.fromJson(String source) => NetworkResponse.fromMap(json.decode(source));
+  factory NetworkResponse.fromJson(String source) =>
+      NetworkResponse.fromMap(json.decode(source));
 
   @override
   String toString() => 'NetworkResponse(time: $time, value: $value)';
@@ -42,10 +43,10 @@ class NetworkResponse {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is NetworkResponse &&
-      other.time == time &&
-      other.value == value;
+        other.time == time &&
+        other.value == value;
   }
 
   @override

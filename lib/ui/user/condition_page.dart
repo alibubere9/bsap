@@ -38,8 +38,9 @@ class ConditionPage extends StatelessWidget {
               } else {
                 int? moduleType =
                     state.companyRoleModel!.companies![0].moduleType;
-                BlocProvider.of<CompanySelectionBloc>(context)
-                    .add(SelectModuleEvent(isRoleSkipped: true, moduleValue: moduleType));
+                BlocProvider.of<CompanySelectionBloc>(context).add(
+                    SelectModuleEvent(
+                        isRoleSkipped: true, moduleValue: moduleType));
                 return CompanySelection();
               }
             } else {

@@ -206,11 +206,13 @@ class _CompanySelectionState extends State<CompanySelection> {
                                                                   moduleType] ==
                                                               ModuleType
                                                                   .sizing) {
-                                                        NavRouter
-                                                          .navKey!.currentState!
-                                                          .pushNamedAndRemoveUntil(
-                                                        RouteStrings.Dashboard,
-                                                        (route) => false,);
+                                                        NavRouter.navKey!
+                                                            .currentState!
+                                                            .pushNamedAndRemoveUntil(
+                                                          RouteStrings
+                                                              .Dashboard,
+                                                          (route) => false,
+                                                        );
                                                       } else {
                                                         BlocProvider.of<
                                                                     CompanySelectionBloc>(
@@ -302,11 +304,13 @@ class _CompanySelectionState extends State<CompanySelection> {
                                                           //             AuthenticationBloc>(
                                                           //         context)
                                                           //     .add(AppStarted());
-                                                          NavRouter
-                                                          .navKey!.currentState!
-                                                          .pushNamedAndRemoveUntil(
-                                                        RouteStrings.Dashboard,
-                                                        (route) => false);
+                                                          NavRouter.navKey!
+                                                              .currentState!
+                                                              .pushNamedAndRemoveUntil(
+                                                                  RouteStrings
+                                                                      .Dashboard,
+                                                                  (route) =>
+                                                                      false);
                                                         },
                                                         child: Column(
                                                           children: [

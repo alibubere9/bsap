@@ -55,7 +55,8 @@ class EntrySectionModel extends Equatable {
 
   String toJson() => json.encode(toMap());
 
-  factory EntrySectionModel.fromJson(String source) => EntrySectionModel.fromMap(json.decode(source));
+  factory EntrySectionModel.fromJson(String source) =>
+      EntrySectionModel.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -72,4 +73,4 @@ class EntrySectionModel extends Equatable {
       subName,
     ];
   }
-  }
+}

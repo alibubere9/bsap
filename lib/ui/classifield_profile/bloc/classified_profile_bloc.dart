@@ -25,7 +25,8 @@ class ClassifiedProfileBloc
       final ClassifiedModel classified =
           await classifiedRepository.getClassifieldById(event.id);
       bool currentUserRated = classified.reviews
-          ?.any((element) => element.customerId == _userService.userId) ?? false;
+              ?.any((element) => element.customerId == _userService.userId) ??
+          false;
       yield ClassifiedProfileLoaded(classified, currentUserRated);
     }
     // yield ClassifiedError();

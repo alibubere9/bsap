@@ -15,7 +15,5 @@ class RoleSelectionBloc extends Bloc<RoleSelectionEvent, RoleSelectionState> {
     on<RoleSelectionEvent>((event, emit) {
       // TODO: implement event handler
     });
-
-    
   }
 }

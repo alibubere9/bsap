@@ -12,7 +12,6 @@ class ArticleModel extends Equatable {
   const ArticleModel(
       {this.id,
       this.heading,
-    
       this.articleUrl,
       this.images,
       this.description,
@@ -43,7 +42,7 @@ class ArticleModel extends Equatable {
       'SubHeading': subHeading,
       'Heading': heading,
       'Images': images,
-     };
+    };
   }
 
   factory ArticleModel.fromMap(Map<String, dynamic> map) {
@@ -54,7 +53,7 @@ class ArticleModel extends Equatable {
       description: map['ShortDescription'],
       images: List<String>.from(map['Images']),
       subHeading: map['SubHeading'],
-  );
+    );
   }
 
   String toJson() => json.encode(toMap());
@@ -74,6 +73,6 @@ class ArticleModel extends Equatable {
       articleUrl,
       heading,
       images,
-     ];
+    ];
   }
 }

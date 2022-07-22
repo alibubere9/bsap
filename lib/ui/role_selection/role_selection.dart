@@ -32,7 +32,8 @@ class RoleSelection extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                     padding: EdgeInsets.all(20),
-                    child: BlocBuilder<CompanySelectionBloc, CompanySelectionState>(
+                    child: BlocBuilder<CompanySelectionBloc,
+                        CompanySelectionState>(
                       builder: (context, state) {
                         return (state is SelectRoleOnPageTwo)
                             ? SingleChildScrollView(
@@ -84,8 +85,8 @@ class RoleSelection extends StatelessWidget {
                                                             CompanySelectionBloc>(
                                                         context)
                                                     .add(SelectModuleEvent(
-                                                      moduleValue: 
-                                                        state.moduleType));
+                                                        moduleValue:
+                                                            state.moduleType));
                                                 // NavRouter.navKey!.currentState!
                                                 //     .pushReplacementNamed(
                                                 //         RouteStrings

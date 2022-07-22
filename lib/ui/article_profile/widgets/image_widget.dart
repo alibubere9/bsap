@@ -17,15 +17,17 @@ class ImageWidget extends StatelessWidget {
       margin: ConstPadding.onlyR10,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
-        child: Image.network(UrlConcat.concatUrl(url!),
+        child: Image.network(
+          UrlConcat.concatUrl(url!),
           fit: BoxFit.cover,
           loadingBuilder: (context, child, loadingProgress) {
-                          return loadingProgress == null
-                              ? child
-                              : ImageLoading(
-                                  height: 150, width: width,
-                                );
-                        },
+            return loadingProgress == null
+                ? child
+                : ImageLoading(
+                    height: 150,
+                    width: width,
+                  );
+          },
           width: width,
         ),
       ),

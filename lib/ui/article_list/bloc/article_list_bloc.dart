@@ -7,8 +7,7 @@ import 'package:equatable/equatable.dart';
 part 'article_list_event.dart';
 part 'article_list_state.dart';
 
-class ArticleListBloc
-    extends Bloc<ArticleListEvent, ArticleListState> {
+class ArticleListBloc extends Bloc<ArticleListEvent, ArticleListState> {
   final IArticleRepository articleRepository;
   ArticleListBloc(this.articleRepository) : super(ArticleListEmpty());
 

@@ -7,4 +7,4 @@ abstract class FaqsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadFaqs extends FaqsEvent{}
+class LoadFaqs extends FaqsEvent {}

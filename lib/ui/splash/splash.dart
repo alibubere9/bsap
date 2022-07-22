@@ -19,7 +19,8 @@ class SplashScreen extends StatelessWidget {
                 width: width * .7,
               ),
               const SpaceHeightWithValue(height: 25),
-              Container(width: width * .7, child: const LinearProgressIndicator()),
+              Container(
+                  width: width * .7, child: const LinearProgressIndicator()),
               const SpaceHeightWithValue(height: 10),
               const Text('Please wait...')
             ],

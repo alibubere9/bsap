@@ -15,7 +15,7 @@ import 'bloc/article_list_bloc.dart';
 class ArticleListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-  final double height = MediaQuery.of(context).size.height;
+    final double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: _buildAppBar(context),
       body: SingleChildScrollView(
@@ -28,7 +28,7 @@ class ArticleListScreen extends StatelessWidget {
                 builder: (context, state) {
                   if (state is ArticleListLoaded) {
                     return SearchField(
-                       text: state.text!,
+                      text: state.text!,
                     );
                   } else if (state is ArticleListEmpty ||
                       state is ArticleListLoading) {
@@ -46,18 +46,16 @@ class ArticleListScreen extends StatelessWidget {
                       child: Column(
                         children: state.articles
                             .map((e) => ArticleTile(
-                                  article: e, 
+                                  article: e,
                                 ))
                             .toList(),
                       ),
                     );
                   } else if (state is ArticleListLoading) {
                     return Container(
-                      height: height * 0.8,
-                      child: BaseShimmmer());
+                        height: height * 0.8, child: BaseShimmmer());
                   } else {
-                    return Center(
-                        child: Text(ConstantStrings.noArticles));
+                    return Center(child: Text(ConstantStrings.noArticles));
                   }
                 },
               )

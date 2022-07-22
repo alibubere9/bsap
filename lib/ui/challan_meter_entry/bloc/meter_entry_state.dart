@@ -29,7 +29,7 @@ class MeterEntryByBarcodeState extends MeterEntryState {
 class BarcodeAlreadyScannedState extends MeterEntryState {
   final String? snackBarMessage;
 
-  BarcodeAlreadyScannedState( this.snackBarMessage);
+  BarcodeAlreadyScannedState(this.snackBarMessage);
   @override
   List<Object?> get props => [snackBarMessage];
 }

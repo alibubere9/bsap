@@ -134,7 +134,6 @@ class AppDrawer extends StatelessWidget {
                         BlocProvider.of<AuthenticationBloc>(context)
                             .add(LoggedOutEvent(context: context));
                         print(state);
-                        
                       },
                     ),
                   ],

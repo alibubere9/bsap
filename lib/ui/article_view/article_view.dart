@@ -4,7 +4,6 @@ import 'package:classified_app/utils/url_concat.dart';
 import 'package:flutter/material.dart';
 
 class ArticleView extends StatelessWidget {
-  
   final String articleUrl;
   const ArticleView({
     Key? key,
@@ -14,9 +13,11 @@ class ArticleView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: CloseButtonCircle(),),
+      appBar: AppBar(
+        leading: CloseButtonCircle(),
+      ),
       body: WebViewWidget(
-        url: UrlConcat.concatUrl(articleUrl),        
+        url: UrlConcat.concatUrl(articleUrl),
       ),
     );
   }

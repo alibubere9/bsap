@@ -22,7 +22,6 @@ class AppMessageRepository extends IAppMessageRepository {
     List list = jsonDecode(json);
     List<String> appMessages = [];
     list.forEach((element) {
-      
       appMessages.add(AppMessage.fromMap(element).toJson());
     });
     await _sharedPreferences.setStringList(APP_MESSAGE_LIST, appMessages);

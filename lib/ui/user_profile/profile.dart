@@ -183,8 +183,7 @@ class UserProfileScreen extends StatelessWidget {
                 //  tileMode: TileMode.decal
               ),
               child: Image.network(
-                UrlConcat.concatUrl(
-                    state.user.image ?? ImagePaths.noImageUrl),
+                UrlConcat.concatUrl(state.user.image ?? ImagePaths.noImageUrl),
                 loadingBuilder: (context, child, loadingProgress) {
                   return loadingProgress == null
                       ? child
@@ -217,7 +216,7 @@ class UserProfileScreen extends StatelessWidget {
                         loadingBuilder: (context, child, loadingProgress) {
                           return loadingProgress == null
                               ? child
-                              : ProfileCircleImageShimmer( );
+                              : ProfileCircleImageShimmer();
                         },
                       ),
                     )

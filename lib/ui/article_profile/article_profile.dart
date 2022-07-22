@@ -86,8 +86,7 @@ class ArticleProfileScreen extends StatelessWidget {
               onTap: () {
                 NavRouter.navKey!.currentState!.pushNamed(
                     RouteStrings.ArticleView,
-                    arguments:
-                        UrlConcat.concatUrl(article.articleUrl ?? ''));
+                    arguments: UrlConcat.concatUrl(article.articleUrl ?? ''));
               },
               bgColor: Colors.transparent,
               textColor: Theme.of(context).primaryColor,

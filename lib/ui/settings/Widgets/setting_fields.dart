@@ -16,8 +16,8 @@ class SettingFieldText extends StatelessWidget {
           width: double.infinity,
           //color: Colors.blueGrey.withOpacity(0.2),
           decoration: BoxDecoration(
-              color: Colors.blueGrey.withOpacity(0.11),
-              ),
+            color: Colors.blueGrey.withOpacity(0.11),
+          ),
           padding: ConstPadding.l18t8b8,
           child: Text(
             text!,

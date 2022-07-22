@@ -3,7 +3,7 @@ import 'package:classified_app/utils/system_settings.dart';
 import 'package:flutter/material.dart';
 
 class TermsAndConditions extends StatelessWidget {
-  const TermsAndConditions({ Key? key }) : super(key: key);
+  const TermsAndConditions({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

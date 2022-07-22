@@ -4,8 +4,8 @@ import 'package:equatable/equatable.dart';
 
 class AppMessage extends Equatable {
   // final int id;
- final String? key;
- final String? message;
+  final String? key;
+  final String? message;
   AppMessage({
     // required this.id,
     required this.key,
@@ -42,11 +42,12 @@ class AppMessage extends Equatable {
 
   String toJson() => json.encode(toMap());
 
-  factory AppMessage.fromJson(String source) => AppMessage.fromMap(json.decode(source));
+  factory AppMessage.fromJson(String source) =>
+      AppMessage.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;
 
   @override
-  List<Object?> get props => [ key, message];
+  List<Object?> get props => [key, message];
 }

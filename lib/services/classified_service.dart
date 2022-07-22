@@ -29,9 +29,9 @@ class ClassifiedService {
       RouteStrings.ClassifiedProfile,
     );
   }
+
   void selectAndNavigateToArticle(BuildContext context, int articleId) {
-    BlocProvider.of<ArticleProfileBloc>(context)
-        .add(LoadArticle(articleId));
+    BlocProvider.of<ArticleProfileBloc>(context).add(LoadArticle(articleId));
     NavRouter.navKey!.currentState!.pushNamed(
       RouteStrings.ArticleProfile,
     );

@@ -8,6 +8,7 @@ import 'package:classified_app/ui/challan_meter_entry/scan_challan_meter_entry.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 class MeterEntry extends StatefulWidget {
   const MeterEntry({Key? key}) : super(key: key);
 

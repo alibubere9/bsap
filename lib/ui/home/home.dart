@@ -90,7 +90,11 @@ class Dashboard extends StatelessWidget {
                                               size: 33,
                                               color: ColorExtensions.fromHex(
                                                   "#FF0000")),
-                                          onTap: () {},
+                                          onTap: () {
+                                            NavRouter.navKey!.currentState!
+                                                .pushNamed(
+                                                    RouteStrings.TakaActual);
+                                          },
                                           subtitleText: "Meter Entry",
                                           titleText: 'Taka Actual'),
                                       DashboardCard(

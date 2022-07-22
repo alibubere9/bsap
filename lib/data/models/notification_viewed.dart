@@ -42,7 +42,8 @@ class NotificationViewedModel extends Equatable {
 
   String toJson() => json.encode(toMap());
 
-  factory NotificationViewedModel.fromJson(String source) => NotificationViewedModel.fromMap(json.decode(source));
+  factory NotificationViewedModel.fromJson(String source) =>
+      NotificationViewedModel.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;

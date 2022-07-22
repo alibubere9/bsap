@@ -44,11 +44,7 @@ class BannerShimmer extends StatelessWidget {
                   width: 30,
                 ),
                 SpaceWidthWithValue(width: 5),
-                Container(
-                  color: Colors.black,
-                  height:30,
-                  width: 30
-                ),
+                Container(color: Colors.black, height: 30, width: 30),
               ],
             ),
           ],

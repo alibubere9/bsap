@@ -6,4 +6,3 @@ abstract class ModuleSelectionEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-

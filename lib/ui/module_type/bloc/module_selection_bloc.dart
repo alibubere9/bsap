@@ -17,7 +17,5 @@ class ModuleSelectionBloc
     on<ModuleSelectionEvent>((event, emit) {
       // TODO: implement event handler
     });
-
-   
   }
 }

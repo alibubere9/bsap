@@ -21,7 +21,7 @@ class BannerBloc extends Bloc<BannerEvent, BannerState> {
   ) async* {
     if (event is LoadBanner) {
       yield BannerLoading();
-      final List<BannerAd> banners =    await bannerRepository.banners;
+      final List<BannerAd> banners = await bannerRepository.banners;
       yield BannerLoaded(banners);
     } else if (event is UnlikeBannerAd) {
       final List<BannerAd> banners = await bannerRepository.banners;

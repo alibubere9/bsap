@@ -2,7 +2,7 @@ part of 'bale_meter_bloc.dart';
 
 abstract class BaleMeterState extends Equatable {
   const BaleMeterState();
-  
+
   @override
   List<Object?> get props => [];
 }

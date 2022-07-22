@@ -34,18 +34,20 @@ class CompanySelectionViewModel {
 
   String toJson() => json.encode(toMap());
 
-  factory CompanySelectionViewModel.fromJson(String source) => CompanySelectionViewModel.fromMap(json.decode(source));
+  factory CompanySelectionViewModel.fromJson(String source) =>
+      CompanySelectionViewModel.fromMap(json.decode(source));
 
   @override
-  String toString() => 'CompanySelectionViewModel(companyName: $companyName, roleNames: $roleNames)';
+  String toString() =>
+      'CompanySelectionViewModel(companyName: $companyName, roleNames: $roleNames)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is CompanySelectionViewModel &&
-      other.companyName == companyName &&
-      other.roleNames == roleNames;
+        other.companyName == companyName &&
+        other.roleNames == roleNames;
   }
 
   @override

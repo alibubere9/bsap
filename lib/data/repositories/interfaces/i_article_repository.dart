@@ -4,5 +4,4 @@ abstract class IArticleRepository {
   Future<List<ArticleModel>> getByCategory(int categoryId);
   Future<ArticleModel> getById(int articleId);
   Future<List<ArticleModel>> getByName(String articleSearch);
-
 }

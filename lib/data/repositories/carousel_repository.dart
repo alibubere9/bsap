@@ -26,4 +26,3 @@ class CarouselRepository extends ICarouselRepository {
     return _images;
   }
 }
-  

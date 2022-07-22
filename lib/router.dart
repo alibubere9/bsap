@@ -8,6 +8,7 @@ import 'package:classified_app/ui/company_selection/company_selection.dart';
 import 'package:classified_app/ui/faqs/faqs.dart';
 import 'package:classified_app/ui/home/home.dart';
 import 'package:classified_app/ui/login/login_page.dart';
+import 'package:classified_app/ui/meter_actual/meter_actual.dart';
 import 'package:classified_app/ui/module_type/module_type.dart';
 import 'package:classified_app/ui/role_selection/role_selection.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +68,7 @@ class RouteStrings {
   static const TermsAndConditions = '/tnc';
   static const ThirdPartyNotices = '/third_party';
   static const ArticleView = '/article_view';
+  static const TakaActual = '/meter_actual';
 }
 
 class NavRouter {
@@ -154,6 +156,9 @@ class NavRouter {
                 imageUrls: enlargedImageArgs.imageUrls,
                 selectedIndex: enlargedImageArgs.selectedIndex),
             type: PageTransitionType.rightToLeft);
+      case (RouteStrings.TakaActual):
+        return _transition(
+            child: MeterActualWidget(), type: PageTransitionType.rightToLeft);
 
       case (RouteStrings.Settings):
         return _transition(

@@ -7,7 +7,9 @@ import 'package:classified_app/data/repositories/interfaces/i_best_deal.dart';
 import 'package:classified_app/data/repositories/interfaces/i_carousel_repository.dart';
 import 'package:classified_app/data/repositories/interfaces/i_challan_repository.dart';
 import 'package:classified_app/data/repositories/interfaces/i_company_selection_repo.dart';
+import 'package:classified_app/data/repositories/interfaces/i_jobber_repository.dart';
 import 'package:classified_app/data/repositories/interfaces/i_system_info_repository.dart';
+import 'package:classified_app/data/repositories/jobber_repository.dart';
 import 'package:classified_app/data/repositories/system_info_repository.dart';
 import 'package:classified_app/environment/environment_switch.dart';
 import 'package:classified_app/environment/i_environment_switch.dart';
@@ -32,6 +34,7 @@ import 'package:classified_app/ui/faqs/bloc/faqs_bloc.dart';
 import 'package:classified_app/ui/get_best_deal/bloc/bestdeal_bloc.dart';
 import 'package:classified_app/ui/banner-ad/bloc/banner_bloc.dart';
 import 'package:classified_app/ui/login/bloc/login_bloc.dart';
+import 'package:classified_app/ui/meter_actual/bloc/meter_actual_bloc.dart';
 import 'package:classified_app/ui/review/bloc/review_bloc.dart';
 import 'package:classified_app/services/interfaces/i_user_service.dart';
 import 'package:classified_app/services/user_service.dart';
@@ -103,6 +106,7 @@ void _initRepositories() {
       () => CompanySelectionRepository());
 
   sl.registerLazySingleton<IFaqsRepository>(() => FaqsRepository(sl()));
+  sl.registerLazySingleton<IJobberRepository>(() => JobberRepository());
   sl.registerLazySingleton<IChallanRepository>(() => ChallanRepository());
   sl.registerLazySingleton<IBaleRepository>(() => BaleRepository());
   sl.registerLazySingleton<IBestDealRepository>(() => BestDealRepository(sl()));
@@ -140,6 +144,7 @@ void _initBloc() {
   sl.registerFactory(() => MeterEntryBloc(sl(), sl()));
   sl.registerFactory(() => BaleMeterBloc(sl()));
   sl.registerFactory(() => LoginBloc(sl()));
+  sl.registerFactory(() => MeterActualBloc(sl()));
 
   sl.registerFactory(() => ClassifiedProfileBloc(sl(), sl()));
   sl.registerFactory(() => ArticleProfileBloc(sl()));

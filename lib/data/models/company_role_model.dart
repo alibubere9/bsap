@@ -98,14 +98,17 @@ class CompanyModel {
     return CompanyModel(
       id: map['id']?.toInt(),
       name: map['name'],
-      roles: map['roles'] != null ? List<RoleModel>.from(map['roles']?.map((x) => RoleModel.fromMap(x))) : null,
+      roles: map['roles'] != null
+          ? List<RoleModel>.from(map['roles']?.map((x) => RoleModel.fromMap(x)))
+          : null,
       moduleType: map['moduleType']?.toInt(),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory CompanyModel.fromJson(String source) => CompanyModel.fromMap(json.decode(source));
+  factory CompanyModel.fromJson(String source) =>
+      CompanyModel.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -115,20 +118,17 @@ class CompanyModel {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is CompanyModel &&
-      other.id == id &&
-      other.name == name &&
-      listEquals(other.roles, roles) &&
-      other.moduleType == moduleType;
+        other.id == id &&
+        other.name == name &&
+        listEquals(other.roles, roles) &&
+        other.moduleType == moduleType;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
-      name.hashCode ^
-      roles.hashCode ^
-      moduleType.hashCode;
+    return id.hashCode ^ name.hashCode ^ roles.hashCode ^ moduleType.hashCode;
   }
 }
 

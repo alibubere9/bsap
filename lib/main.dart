@@ -7,6 +7,7 @@ import 'package:classified_app/ui/bale_list/bloc/bales_list_bloc.dart';
 import 'package:classified_app/ui/challan_list/bloc/challan_bloc.dart';
 import 'package:classified_app/ui/company_selection/bloc/company_selection_bloc.dart';
 import 'package:classified_app/ui/home/bloc/home_bloc.dart';
+import 'package:classified_app/ui/meter_actual/bloc/meter_actual_bloc.dart';
 import 'package:classified_app/ui/module_type/bloc/module_selection_bloc.dart';
 import 'package:classified_app/ui/role_selection/bloc/role_selection_bloc.dart';
 import 'package:classified_app/ui/settings/bloc/settings_bloc.dart';
@@ -65,6 +66,8 @@ class MyApp extends StatelessWidget {
       BlocProvider<HomeBloc>(
           create: (context) => di.sl<HomeBloc>()..add(LoadHome())),
       BlocProvider<ChallanBloc>(create: (context) => di.sl<ChallanBloc>()),
+      BlocProvider<MeterActualBloc>(
+          create: (context) => di.sl<MeterActualBloc>()..add(GetJobbers())),
       BlocProvider<BalesListBloc>(create: (context) => di.sl<BalesListBloc>()),
       BlocProvider<MeterEntryBloc>(
           create: (context) => di.sl<MeterEntryBloc>()),

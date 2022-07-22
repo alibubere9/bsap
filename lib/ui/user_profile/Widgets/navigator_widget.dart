@@ -2,6 +2,7 @@ import 'package:classified_app/ui/user_profile/Widgets/user_options.dart';
 import 'package:flutter/material.dart';
 
 import 'option_text.dart';
+
 class NavigatorWidget extends StatelessWidget {
   final IconData? icon;
   final String? constString;

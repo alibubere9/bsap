@@ -11,15 +11,12 @@ class CarouselShimmer extends StatelessWidget {
       count: 15,
       child: Padding(
         padding: const EdgeInsets.all(15.0),
-        child:  Container(
-                  color: Colors.green,
-                  height: 151,
-                  width: width * 0.8,
-                ),
-            ),
-          
-        );
-      
-    
+        child: Container(
+          color: Colors.green,
+          height: 151,
+          width: width * 0.8,
+        ),
+      ),
+    );
   }
 }

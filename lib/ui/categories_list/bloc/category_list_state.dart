@@ -16,4 +16,3 @@ class CategoryListLoaded extends CategoryListState {
   @override
   List<Object> get props => [categories];
 }
-

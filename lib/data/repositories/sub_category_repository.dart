@@ -9,14 +9,13 @@ class SubCategoryRepository implements ISubCategoryRepository {
   SubCategoryRepository(this._handler);
   @override
   Future<List<SubCategoryModel>> getSubCategories(int categoryId) async {
-    
     String response = await _handler.getAllSubCategories(categoryId);
     List<SubCategoryModel> _subCategories = _convertJsonToSubCategory(response);
     return _subCategories;
   }
 
   List<SubCategoryModel> _convertJsonToSubCategory(String response) {
-     List _rawJsonList = jsonDecode(response);
+    List _rawJsonList = jsonDecode(response);
     List<SubCategoryModel> _subCategories = [];
     _rawJsonList.forEach((element) {
       _subCategories.add(SubCategoryModel.fromMap(element));

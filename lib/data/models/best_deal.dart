@@ -16,8 +16,6 @@ class BestDealModel extends Equatable {
     this.phoneNumber,
   });
 
-  
-
   BestDealModel copyWith({
     int? customerId,
     int? classifiedId,
@@ -56,7 +54,8 @@ class BestDealModel extends Equatable {
 
   String toJson() => json.encode(toMap());
 
-  factory BestDealModel.fromJson(String source) => BestDealModel.fromMap(json.decode(source));
+  factory BestDealModel.fromJson(String source) =>
+      BestDealModel.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;

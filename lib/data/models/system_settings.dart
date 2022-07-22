@@ -15,7 +15,6 @@ class SystemSetting extends Equatable {
     required this.value,
     required this.comments,
   });
-  
 
   SystemSetting copyWith({
     int? id,
@@ -55,7 +54,8 @@ class SystemSetting extends Equatable {
 
   String toJson() => json.encode(toMap());
 
-  factory SystemSetting.fromJson(String source) => SystemSetting.fromMap(json.decode(source));
+  factory SystemSetting.fromJson(String source) =>
+      SystemSetting.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;

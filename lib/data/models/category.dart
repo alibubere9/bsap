@@ -9,12 +9,8 @@ class CategoryModel extends Equatable {
   final String? color;
   final bool? isSpecialCategory;
 
-  CategoryModel({
-    this.id,
-    this.iconId,
-    this.name,
-    this.isSpecialCategory,
-    this.color });
+  CategoryModel(
+      {this.id, this.iconId, this.name, this.isSpecialCategory, this.color});
 
   CategoryModel copyWith({
     int? id,
@@ -38,14 +34,15 @@ class CategoryModel extends Equatable {
       'IsSpecialCategory': isSpecialCategory,
       'IconId': iconId,
       'Name': name,
-      'IconColor' : color,
+      'IconColor': color,
     };
   }
 
   factory CategoryModel.fromMap(Map<String, dynamic> map) {
     return CategoryModel(
       id: map['Id'],
-      iconId: (map['IconId'] is String) ? int.parse(map['IconId']) : map['IconId'],
+      iconId:
+          (map['IconId'] is String) ? int.parse(map['IconId']) : map['IconId'],
       isSpecialCategory: map['IsSpecialCategory'],
       name: map['Name'],
       color: map['IconColor'],

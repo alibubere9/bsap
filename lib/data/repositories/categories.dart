@@ -20,7 +20,7 @@ class CategoryRepository implements ICategoryRepository {
         .where((element) =>
             element.isSpecialCategory == null || !element.isSpecialCategory!)
         .toList()
-          ..sort((a, b) => a.name!.compareTo(b.name!));
+      ..sort((a, b) => a.name!.compareTo(b.name!));
   }
 
   Future<List<CategoryModel>> get bhiwandiSpecifiedCategories async {

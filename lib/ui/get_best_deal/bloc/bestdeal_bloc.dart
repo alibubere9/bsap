@@ -27,7 +27,7 @@ class BestDealBloc extends Bloc<BestDealEvent, BestDealState> {
       yield NavigatedBestDeal(event.classifiedId, userService.userId);
     } else if (event is SubmitBestDeal) {
       yield LoadingBestDeal();
-       await bestDealRepository.getBestDeal(event.bestDealModel!);
+      await bestDealRepository.getBestDeal(event.bestDealModel!);
       yield NavigatedBestDeal(
           event.bestDealModel!.classifiedId, userService.userId);
     }

@@ -40,21 +40,24 @@ class BannerLike {
 
   String toJson() => json.encode(toMap());
 
-  factory BannerLike.fromJson(String source) => BannerLike.fromMap(json.decode(source));
+  factory BannerLike.fromJson(String source) =>
+      BannerLike.fromMap(json.decode(source));
 
   @override
-  String toString() => 'BannerLike(customerId: $customerId, bannerId: $bannerId, isLiked: $isLiked)';
+  String toString() =>
+      'BannerLike(customerId: $customerId, bannerId: $bannerId, isLiked: $isLiked)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is BannerLike &&
-      other.customerId == customerId &&
-      other.bannerId == bannerId &&
-      other.isLiked == isLiked;
+        other.customerId == customerId &&
+        other.bannerId == bannerId &&
+        other.isLiked == isLiked;
   }
 
   @override
-  int get hashCode => customerId.hashCode ^ bannerId.hashCode ^ isLiked.hashCode;
+  int get hashCode =>
+      customerId.hashCode ^ bannerId.hashCode ^ isLiked.hashCode;
 }

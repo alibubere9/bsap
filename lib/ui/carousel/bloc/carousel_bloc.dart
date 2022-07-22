@@ -19,7 +19,7 @@ class CarouselBloc extends Bloc<CarouselEvent, CarouselState> {
   Stream<CarouselState> mapEventToState(
     CarouselEvent event,
   ) async* {
-    if(event is LoadCarousels) {
+    if (event is LoadCarousels) {
       yield CarouselLoading();
       List<Carousel> _carousels = await _carouselRepository.carousels;
       yield CarouselLoaded(_carousels);
