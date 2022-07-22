@@ -7,11 +7,10 @@ abstract class MeterEntryEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetToMeterEntryPage extends MeterEntryEvent {
-  final int? pageNumber;
-  final int? peices;
+class GetToSubmissionReviewPage extends MeterEntryEvent {
+  final List<MeterEntryModel>? meterEntryList;
 
-  GetToMeterEntryPage({this.pageNumber, this.peices});
+  GetToSubmissionReviewPage({this.meterEntryList});
 }
 
 class PreviousPageEvent extends MeterEntryEvent {
@@ -26,4 +25,17 @@ class NextPageEvent extends MeterEntryEvent {
   final List<MeterEntryModel>? meterEntryList;
 
   NextPageEvent({this.pageNumber, this.meterEntryList});
+}
+
+class SendBarcodeNumberEvent extends MeterEntryEvent {
+  final int? index;
+  final String? barcodeNumber;
+
+  SendBarcodeNumberEvent({this.index, this.barcodeNumber});
+}
+
+class BarcodeAlreadyScannedEvent extends MeterEntryEvent {
+  final String? snackBarMessage;
+
+  BarcodeAlreadyScannedEvent({this.snackBarMessage});
 }

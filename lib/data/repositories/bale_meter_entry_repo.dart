@@ -6,15 +6,17 @@ import 'package:classified_app/data/repositories/interfaces/i_entry_section_repo
 import 'package:classified_app/data/repositories/interfaces/i_meter_entry_repo.dart';
 import 'package:classified_app/utils/name_abbrievation.dart';
 
-class MeterEntryRepository extends IMeterEntryRepository {
+import 'interfaces/i_bale_meter_entry_repo.dart';
+
+class BaleMeterEntryRepository extends IBaleMeterEntryRepository {
   @override
-  List<MeterEntryModel> meterEntryList() {
+  List<MeterEntryModel> baleMeterEntryList() {
     return MockMeterEntry.meterEntry;
   }
 
   @override
-  MeterEntryModel getMeterEntryByBarcodeNumber(String barcodeNumber) {
-    MeterEntryModel meterEntry = meterEntryList().firstWhere(
+  MeterEntryModel getBaleMeterEntryByBarcodeNumber(String barcodeNumber) {
+    MeterEntryModel meterEntry = baleMeterEntryList().firstWhere(
       (element) => element.barCode == barcodeNumber,
       orElse: () => MeterEntryModel(
           barCode: barcodeNumber,

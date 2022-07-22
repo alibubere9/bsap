@@ -1,18 +1,17 @@
-import 'package:classified_app/data/models/challan_model.dart';
 import 'package:classified_app/global/theme/textstyle.dart';
 import 'package:classified_app/router.dart';
-import 'package:classified_app/ui/challan_list/bloc/challan_bloc.dart';
+import 'package:classified_app/ui/bale_list/bloc/bales_list_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ChallanList extends StatefulWidget {
-  const ChallanList({Key? key}) : super(key: key);
+class BaleList extends StatefulWidget {
+  const BaleList({Key? key}) : super(key: key);
 
   @override
-  State<ChallanList> createState() => _ChallanListState();
+  State<BaleList> createState() => _BaleListState();
 }
 
-class _ChallanListState extends State<ChallanList> {
+class _BaleListState extends State<BaleList> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -20,7 +19,7 @@ class _ChallanListState extends State<ChallanList> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "Select a Challan",
+          "Select a Bale",
           style: TextStyles.style16w800.copyWith(
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold),
@@ -28,16 +27,17 @@ class _ChallanListState extends State<ChallanList> {
       ),
       body: Container(
         padding: EdgeInsets.all(0.0),
-        child: BlocBuilder<ChallanBloc, ChallanState>(
+        child: BlocBuilder<BalesListBloc, BalesListState>(
           builder: (context, state) {
-            if (state is ChallanLoaded) {
+            if (state is BalesListLoaded) {
               return Column(
-                children: state.challans
+                children: state.balesList
                     .map((e) => GestureDetector(
                           onTap: () {
-                            BlocProvider.of<ChallanBloc>(context).selected = e;
+                            BlocProvider.of<BalesListBloc>(context).selected =
+                                e;
                             NavRouter.navKey!.currentState!
-                                .pushNamed(RouteStrings.MeterEntry);
+                                .pushNamed(RouteStrings.BaleMeterEntry);
                           },
                           child: Card(
                             child: Container(
@@ -52,7 +52,7 @@ class _ChallanListState extends State<ChallanList> {
                                         Container(
                                           width: w / 1.5,
                                           child: Text(
-                                            e.challanNo.toString(),
+                                            e.baleNo.toString(),
                                             style: TextStyle(
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.bold,

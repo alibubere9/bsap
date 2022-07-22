@@ -3,31 +3,20 @@ import 'package:classified_app/global/auth/bloc/authentication_bloc.dart';
 import 'package:classified_app/global/theme/bloc/theme_bloc.dart';
 import 'package:classified_app/global/theme/theme_info.dart';
 import 'package:classified_app/router.dart';
-import 'package:classified_app/ui/article_list/bloc/article_list_bloc.dart';
-import 'package:classified_app/ui/article_profile/bloc/article_profile_bloc.dart';
-import 'package:classified_app/ui/carousel/bloc/carousel_bloc.dart';
-import 'package:classified_app/ui/categories_list/bloc/category_list_bloc.dart';
+import 'package:classified_app/ui/bale_list/bloc/bales_list_bloc.dart';
 import 'package:classified_app/ui/challan_list/bloc/challan_bloc.dart';
-import 'package:classified_app/ui/challan_list/challan_list.dart';
-import 'package:classified_app/ui/classifield_list/bloc/classified_list_bloc.dart';
-import 'package:classified_app/ui/classifield_profile/bloc/classified_profile_bloc.dart';
 import 'package:classified_app/ui/company_selection/bloc/company_selection_bloc.dart';
-import 'package:classified_app/ui/faqs/bloc/faqs_bloc.dart';
-import 'package:classified_app/ui/get_best_deal/bloc/bestdeal_bloc.dart';
-import 'package:classified_app/ui/banner-ad/bloc/banner_bloc.dart';
 import 'package:classified_app/ui/home/bloc/home_bloc.dart';
-import 'package:classified_app/ui/meter_entry/bloc/meter_entry_bloc.dart';
 import 'package:classified_app/ui/module_type/bloc/module_selection_bloc.dart';
-import 'package:classified_app/ui/notifications/bloc/notification_bloc.dart';
-import 'package:classified_app/ui/review/bloc/review_bloc.dart';
 import 'package:classified_app/ui/role_selection/bloc/role_selection_bloc.dart';
 import 'package:classified_app/ui/settings/bloc/settings_bloc.dart';
-import 'package:classified_app/ui/sub_categories_list/bloc/sub_category_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'injection.dart' as di;
+import 'ui/bale_meter_entry/bloc/bale_meter_bloc.dart';
+import 'ui/challan_meter_entry/bloc/meter_entry_bloc.dart';
 import 'ui/user/bloc/user_bloc.dart';
 import 'services/interfaces/i_theme_service.dart';
 
@@ -75,12 +64,11 @@ class MyApp extends StatelessWidget {
     return [
       BlocProvider<HomeBloc>(
           create: (context) => di.sl<HomeBloc>()..add(LoadHome())),
-      BlocProvider<ChallanBloc>(
-          create: (context) => di.sl<ChallanBloc>()
-            //!Remove this initial call as soon as there is code on Dashboard linking with challlan list...
-            ..add(LoadChallan())),
+      BlocProvider<ChallanBloc>(create: (context) => di.sl<ChallanBloc>()),
+      BlocProvider<BalesListBloc>(create: (context) => di.sl<BalesListBloc>()),
       BlocProvider<MeterEntryBloc>(
           create: (context) => di.sl<MeterEntryBloc>()),
+      BlocProvider<BaleMeterBloc>(create: (context) => di.sl<BaleMeterBloc>()),
       BlocProvider<AuthenticationBloc>(
           create: (context) => di.sl<AuthenticationBloc>()..add(AppStarted())),
       BlocProvider<UserBloc>(
